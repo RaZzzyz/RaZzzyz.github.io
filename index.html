@@ -35,11 +35,12 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></he
         <h3 id="1-安装工具">
           <a href="#1-安装工具" class="heading-link"><i class="fas fa-link"></i></a><a href="#1-安装工具" class="headerlink" title="1.安装工具"></a>1.安装工具</h3>
       <p>安装node.js，安装成功后，通过命令行测试</p>
-<img src="/.cn//a.jpg">
+<img src="/2021/11/04/windows%E4%B8%8Bhexo-%E5%8D%8E%E4%B8%BA%E4%BA%91-github%E9%85%8D%E7%BD%AE%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/a.jpg">
 
 <p>出现这种情况时安装成功,然后在<font size="4" color="red">git bash</font>中进入想要放置blog的目录，输入<code>npm install hexo-cli -g</code> </p>
 <p>安装成功后,输入</p>
 <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd blog</span><br><span class="line">npm install</span><br><span class="line">hexo s</span><br></pre></td></tr></table></div></figure>
+
 <p>此时可以在<span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="http://localhost:4000/">本地</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>初步检查网站。</p>
 
         <h3 id="2-github工作">
@@ -49,12 +50,14 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></he
 <p>在<font size="4" color="red">git bash</font>中进行ssh的获取</p>
 <p>输入</p>
 <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;你的昵称&quot;</span><br><span class="line">git config --global user.email &quot;你的邮箱&quot;</span><br><span class="line">ssh-keygen -t rsa -C &quot;xxxx7537@qq.com&quot;(你的邮箱）</span><br></pre></td></tr></table></div></figure>
+
 <p>成功后可以在.ssh文件夹下看到两个文件</p>
-<img src="/.cn//b.jpg">
+<img src="/2021/11/04/windows%E4%B8%8Bhexo-%E5%8D%8E%E4%B8%BA%E4%BA%91-github%E9%85%8D%E7%BD%AE%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/b.jpg">
 
 <p>复制 <code>id_ras.phb</code> 中的内容，打开github的setting，找到SSH and GPG keys选项卡，点击new选项，title随意填,将复制的内容粘贴到key中，然后保存。</p>
 <p>打开blog下的_config.yml，添加以下内容</p>
 <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/xxxxxx.github.io.git &quot;填你自己的网址&quot;</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></div></figure>
+
 <p>安装一个推送工具</p>
 <p><code>npm install hexo-deployer-git --save</code></p>
 <p>一个完整的部署流程大致上为</p>
@@ -63,7 +66,8 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></he
 
         <h3 id="3-域名解析">
           <a href="#3-域名解析" class="heading-link"><i class="fas fa-link"></i></a><a href="#3-域名解析" class="headerlink" title="3.域名解析"></a>3.域名解析</h3>
-      <p>在华为云官网打开控制台，在域名列表中点击域名解析，选择自己的域名点击解析，点右上角的添加记录集，像如下一样填写<br><img src="/.cn//c.jpg"><br>然后在public文件夹下创建一个CNAME.txt，里面填入你的域名，保存后删除.txt后缀<br>此时就可以通过你的域名进入你的博客了！</p>
+      <p>在华为云官网打开控制台，在域名列表中点击域名解析，选择自己的域名点击解析，点右上角的添加记录集，像如下一样填写<br><img src="/2021/11/04/windows%E4%B8%8Bhexo-%E5%8D%8E%E4%B8%BA%E4%BA%91-github%E9%85%8D%E7%BD%AE%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/c.jpg"><br>然后在public文件夹下创建一个CNAME.txt，里面填入你的域名，保存后删除.txt后缀<br>此时就可以通过你的域名进入你的博客了！</p>
+<hr>
 </div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2021/11/04/hello/">hello</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2021-11-04</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2021-11-04</span></span></div></header><div class="post-body"><div class="post-excerpt">
         <h2 id="Hello-friends">
           <a href="#Hello-friends" class="heading-link"><i class="fas fa-link"></i></a><a href="#Hello-friends" class="headerlink" title="Hello,friends  "></a><center><font color="#a1468">Hello,friends </font> </center></h2>
