@@ -1,0 +1,74 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta name="description" content="简单的介绍TransE模型">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TransE模型原理">
+<meta property="og:url" content="http://www.razzzyz.cn/2021/11/05/TransE%E6%A8%A1%E5%9E%8B%E5%8E%9F%E7%90%86/index.html">
+<meta property="og:site_name" content="RaZz的博客">
+<meta property="og:description" content="简单的介绍TransE模型">
+<meta property="og:locale">
+<meta property="og:image" content="http://www.razzzyz.cn/2021/11/05/TransE%E6%A8%A1%E5%9E%8B%E5%8E%9F%E7%90%86/a.jpg">
+<meta property="article:published_time" content="2021-11-05T05:28:43.000Z">
+<meta property="article:modified_time" content="2021-11-05T05:55:48.592Z">
+<meta property="article:author" content="RaZz">
+<meta property="article:tag" content="KG">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.razzzyz.cn/2021/11/05/TransE%E6%A8%A1%E5%9E%8B%E5%8E%9F%E7%90%86/a.jpg"><title>TransE模型原理 | RaZz的博客</title><link ref="canonical" href="http://www.razzzyz.cn/2021/11/05/TransE%E6%A8%A1%E5%9E%8B%E5%8E%9F%E7%90%86/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"Copy","copySuccess":"Copy Success","copyError":"Copy Error"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">Categories</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">Tags</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">RaZz的博客</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">TransE模型原理</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2021-11-05</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2021-11-05</span></span></div></header><div class="post-body">
+        <h2 id="TransE模型">
+          <a href="#TransE模型" class="heading-link"><i class="fas fa-link"></i></a><a href="#TransE模型" class="headerlink" title=" TransE模型 "></a><center> TransE模型 </center></h2>
+      
+        <h3 id="1-TransE作用">
+          <a href="#1-TransE作用" class="heading-link"><i class="fas fa-link"></i></a><a href="#1-TransE作用" class="headerlink" title="1.TransE作用"></a>1.TransE作用</h3>
+      <p>TransE模型的核心作用就是将知识图谱中的三元组翻译成embedding向量</p>
+
+        <h3 id="2-TransE模型的设计思想">
+          <a href="#2-TransE模型的设计思想" class="heading-link"><i class="fas fa-link"></i></a><a href="#2-TransE模型的设计思想" class="headerlink" title="2.TransE模型的设计思想"></a>2.TransE模型的设计思想</h3>
+      <p>如果一个三元组(h,r,t)成立，那么他们需要符合h+r≈t的关系<br>我们也可以这样理解</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">h 表示知识图谱中的头实体的向量。</span><br><span class="line">t 表示知识图谱中的尾实体的向量。</span><br><span class="line">r 表示知识图谱中的关系的向量。</span><br></pre></td></tr></table></div></figure>
+<p>用图的方式描述如下:<br><img src="/2021/11/05/TransE%E6%A8%A1%E5%9E%8B%E5%8E%9F%E7%90%86/a.jpg"></p>
+<p>如果一个三元组不满足上述关系，那么则认为他们不成立.</p>
+
+        <h3 id="3-TransE的目标函数">
+          <a href="#3-TransE的目标函数" class="heading-link"><i class="fas fa-link"></i></a><a href="#3-TransE的目标函数" class="headerlink" title="3.TransE的目标函数"></a>3.TransE的目标函数</h3>
+      <p>根据我们上面介绍的Trans中的假设，我们可以知道，对于一个三元组而言，头实体向量和关系向量之和与尾实体向量越接近，那么说明该三元组越接近一个正确的三元组，差距越大，那么说明这个三元组越不正常。那么我们可以选择L1或者L2范数来衡量三个向量的差距。而我们的目标就是使得争取的三元组的距离越小越好，错误的三元组距离越大越好，也就是其相反数越小越好。数学化的表示就是：<br>$$ min\sum_{(h,r,t)\in G}\sum_{(h’,r’,t’)\in G’}[γ+distance(h+r,t)-distance(h’+r’,t’)]<em>+$$<br>其中<br><br>(h,r,t)表示正确的三元组<br><br>(h’,r’,t’)：表示错误的三三元组<br><br>γ  ：表示正样本和负样本之间的间距，一个常数<br><br>$[x]</em>+$：表示max(0,x)<br></p>
+
+        <h3 id="4-目标函数的迭代过程">
+          <a href="#4-目标函数的迭代过程" class="heading-link"><i class="fas fa-link"></i></a><a href="#4-目标函数的迭代过程" class="headerlink" title="4.目标函数的迭代过程"></a>4.目标函数的迭代过程</h3>
+      <p>我们将欧氏距离作为distance函数，则损失函数即为<br>$$Loss=\sum_{(h,r,t)\in G}\sum_{(h’,r’,t’)\in G’}[γ+(h+r-t)^2-(h’+r’-t’)^2]_+$$<br>对于损失函数的求偏导：</p>
+<p>LOSS&lt;=0时 偏导为0，</p>
+<p>LOSS&gt;0时  很易求得</p>
+
+        <h3 id="4-获得负样本">
+          <a href="#4-获得负样本" class="heading-link"><i class="fas fa-link"></i></a><a href="#4-获得负样本" class="headerlink" title="4.获得负样本"></a>4.获得负样本</h3>
+      <p>对于一个知识图谱而言，其中保存的全部都是正样本时肯定的了。那么，我们应该如何获取负样本呢？</p>
+<p>具体的可以通过随机替换头实体的方式来实现一个错误的三元组，或者采用随机替换一个错误的尾实体的方式来形成一个错误的三元组。</p>
+<p>同时，为了避免，我们替换形成的三元组也存在于知识图谱中，我们需要在替换之后进行过滤。</p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">Author: </span><span class="copyright-author__value"><a href="http://www.razzzyz.cn">RaZz</a></span></div><div class="copyright-link"><span class="copyright-link__name">Link: </span><span class="copyright-link__value"><a href="http://www.razzzyz.cn/2021/11/05/TransE%E6%A8%A1%E5%9E%8B%E5%8E%9F%E7%90%86/">http://www.razzzyz.cn/2021/11/05/TransE%E6%A8%A1%E5%9E%8B%E5%8E%9F%E7%90%86/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">Copyright: </span><span class="copyright-notice__value">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-cn" rel="external nofollow" target="_blank">BY-NC-SA</a> unless stating additionally</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://www.razzzyz.cn/tags/KG/">KG</a></span></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/2021/11/04/windows%E4%B8%8Bhexo-%E5%8D%8E%E4%B8%BA%E4%BA%91-github%E9%85%8D%E7%BD%AE%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"><span class="paginator-prev__text">windows下hexo+华为云+github配置个人博客</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">Catalog</span><span class="sidebar-nav-ov">Overview</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#TransE%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">
+           TransE模型 </span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-TransE%E4%BD%9C%E7%94%A8"><span class="toc-number">1.1.</span> <span class="toc-text">
+          1.TransE作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-TransE%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%80%9D%E6%83%B3"><span class="toc-number">1.2.</span> <span class="toc-text">
+          2.TransE模型的设计思想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-TransE%E7%9A%84%E7%9B%AE%E6%A0%87%E5%87%BD%E6%95%B0"><span class="toc-number">1.3.</span> <span class="toc-text">
+          3.TransE的目标函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E7%9B%AE%E6%A0%87%E5%87%BD%E6%95%B0%E7%9A%84%E8%BF%AD%E4%BB%A3%E8%BF%87%E7%A8%8B"><span class="toc-number">1.4.</span> <span class="toc-text">
+          4.目标函数的迭代过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E8%8E%B7%E5%BE%97%E8%B4%9F%E6%A0%B7%E6%9C%AC"><span class="toc-number">1.5.</span> <span class="toc-text">
+          4.获得负样本</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/stun-logo.svg" alt="avatar"></div><p class="sidebar-ov-author__text">hello world</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">3</div><div class="sidebar-ov-state-item__name">Archives</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">2</div><div class="sidebar-ov-state-item__name">Categories</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">3</div><div class="sidebar-ov-state-item__name">Tags</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-cn" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">You have read </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>RaZz</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v5.4.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>
