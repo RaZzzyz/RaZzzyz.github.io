@@ -7,7 +7,7 @@
         .rainbow {
             margin: 20px;
             width: 200px;
-            background: linear-gradient(90deg, rgb(0, 195, 255), rgba(255, 4, 138, 0.178));
+            background: linear-gradient(90deg, rgb(119, 24, 0), rgba(255, 0, 255, 0.178));
             -webkit-text-fill-color: transparent;
             -webkit-background-clip: text;
         }
@@ -40,9 +40,17 @@ object-assign
 
 <body>
     <center>
-        <audio autoplay="autoplay" controls="controls"loop="loop" preload="auto"
+        <audio autoplay="autoplay" controls="controls"loop="loop" preload="auto" style="float:left"
         src="晴天.mp3">
-</audio>
+</audio><div>
+
+</div>
+<!-- id 将作为查询条件 -->
+<span id="<Your/Path/Name>" class="leancloud_visitors" data-flag-title="Your Article Title">
+    <div class="rainbow" em class="post-meta-item-text" style="float:right">阅读量 </em>
+    <i class="leancloud-visitors-count" style="float:right">1000000</i></div>
+</span>
+
 <div></div>
         <font size=20>不会写网页</font>
         </p>
@@ -56,8 +64,6 @@ object-assign
         </b>
     </center>
     <div id="vcomments"></div>
-
-       
     <script>
 
         new Valine({
