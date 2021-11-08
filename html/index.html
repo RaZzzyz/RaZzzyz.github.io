@@ -46,9 +46,10 @@ object-assign
 
 </div>
 <!-- id 将作为查询条件 -->
-<span id="<Your/Path/Name>" class="leancloud_visitors" data-flag-title="Your Article Title">
-    <div class="rainbow" em class="post-meta-item-text" style="float:right">阅读量 </em>
-    <i class="leancloud-visitors-count" style="float:right">1000000</i></div>
+<span id="<%- url_for(post.path) %>"style="float:right" class="rainbow" class="leancloud-visitors view" data-flag-title="<%= post.title %>">
+    <em class="post-meta-item-text" style="float:right">Pageviews:</em>
+    <i class="leancloud-visitors-count"></i>
+  </span>
 </span>
 
 <div></div>
@@ -63,7 +64,7 @@ object-assign
             </div>
         </b>
     </center>
-    <div id="vcomments"></div>
+    <div id="vcomments"></div> 
     <script>
 
         new Valine({
@@ -82,5 +83,6 @@ object-assign
         })
 
     </script>
+    
 </body>
 </head>
