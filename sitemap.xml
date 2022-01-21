@@ -126,7 +126,7 @@
   </url>
   
   <url>
-    <loc>http://www.razzzyz.cn/tags/private/</loc>
+    <loc>http://www.razzzyz.cn/tags/KG/</loc>
     <lastmod>2022-01-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -147,7 +147,7 @@
   </url>
   
   <url>
-    <loc>http://www.razzzyz.cn/tags/KG/</loc>
+    <loc>http://www.razzzyz.cn/tags/private/</loc>
     <lastmod>2022-01-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -191,14 +191,14 @@
   </url>
   
   <url>
-    <loc>http://www.razzzyz.cn/categories/NLP/</loc>
+    <loc>http://www.razzzyz.cn/categories/KG/</loc>
     <lastmod>2022-01-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://www.razzzyz.cn/categories/KG/</loc>
+    <loc>http://www.razzzyz.cn/categories/NLP/</loc>
     <lastmod>2022-01-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
