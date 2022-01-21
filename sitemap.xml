@@ -119,13 +119,6 @@
 
   
   <url>
-    <loc>http://www.razzzyz.cn/tags/KG/</loc>
-    <lastmod>2022-01-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://www.razzzyz.cn/tags/web/</loc>
     <lastmod>2022-01-21</lastmod>
     <changefreq>weekly</changefreq>
@@ -133,14 +126,7 @@
   </url>
   
   <url>
-    <loc>http://www.razzzyz.cn/tags/NLP/</loc>
-    <lastmod>2022-01-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.razzzyz.cn/tags/NN/</loc>
+    <loc>http://www.razzzyz.cn/tags/KG/</loc>
     <lastmod>2022-01-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -161,14 +147,21 @@
   </url>
   
   <url>
-    <loc>http://www.razzzyz.cn/tags/RS/</loc>
+    <loc>http://www.razzzyz.cn/tags/NLP/</loc>
     <lastmod>2022-01-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://www.razzzyz.cn/tags/introduction/</loc>
+    <loc>http://www.razzzyz.cn/tags/NN/</loc>
+    <lastmod>2022-01-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.razzzyz.cn/tags/RS/</loc>
     <lastmod>2022-01-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -181,7 +174,21 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>http://www.razzzyz.cn/tags/introduction/</loc>
+    <lastmod>2022-01-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
+  
+  <url>
+    <loc>http://www.razzzyz.cn/categories/%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83/</loc>
+    <lastmod>2022-01-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
   
   <url>
     <loc>http://www.razzzyz.cn/categories/KG/</loc>
@@ -191,7 +198,7 @@
   </url>
   
   <url>
-    <loc>http://www.razzzyz.cn/categories/%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83/</loc>
+    <loc>http://www.razzzyz.cn/categories/%E6%96%87%E5%AD%A6/</loc>
     <lastmod>2022-01-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -206,13 +213,6 @@
   
   <url>
     <loc>http://www.razzzyz.cn/categories/machinelearning/</loc>
-    <lastmod>2022-01-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.razzzyz.cn/categories/%E6%96%87%E5%AD%A6/</loc>
     <lastmod>2022-01-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
