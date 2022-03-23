@@ -41,100 +41,139 @@ window.CONFIG = CONFIG;</script><!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
 <!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.0.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/html/"><span class="header-nav-menu-item__icon"><i class="fas fa-html"></i></span><span class="header-nav-menu-item__text">网页</span></a></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">搜索</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">RaZz</div><div class="header-banner-info__subtitle">年纪轻轻的只有尸体才会躺着摆烂</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">机器学习周志华第一二章</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2022-01-18</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2022-01-18</span></span><span class="post-meta-item post-meta-item--visitors leancloud_visitors" id="/2022/01/18/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%91%A8%E5%BF%97%E5%8D%8E%E7%AC%AC%E4%B8%80%E4%BA%8C%E7%AB%A0/" data-flag-title="机器学习周志华第一二章"><span class="post-meta-item__icon"><i class="fas fa-eye"></i></span><span class="post-meta-item__info">阅读次数</span><span class="post-meta-item__value leancloud-visitors-count"></span></span></div></header><div class="post-body">
         <h3 id="第一章">
-          <a href="#第一章" class="heading-link"><i class="fas fa-link"></i></a><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h3>
+          <a href="#第一章" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#第一章"></a> 第一章</h3>
       
-        <h4 id="1-1-引言">
-          <a href="#1-1-引言" class="heading-link"><i class="fas fa-link"></i></a><a href="#1-1-引言" class="headerlink" title="1.1 引言"></a>1.1 引言</h4>
-      <p>机器学习所研究的内容，是关于在计算机上从数据中产生“模型”的算法，即“学习算法”.(在本书中“模型泛指从数据中学得的结果”)</p>
+
+        <h4 id="11-引言">
+          <a href="#11-引言" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#11-引言"></a> 1.1 引言</h4>
+      
+<p>机器学习所研究的内容，是关于在计算机上从数据中产生“模型”的算法，即“学习算法”.(在本书中“模型泛指从数据中学得的结果”)</p>
 <p>如果说计算机科学是研究关于“算法”的学问，类似的，可以说机器学习是研究关于“学习算法”的学问。</p>
 
-        <h4 id="1-2-基本术语">
-          <a href="#1-2-基本术语" class="heading-link"><i class="fas fa-link"></i></a><a href="#1-2-基本术语" class="headerlink" title="1.2 基本术语"></a>1.2 基本术语</h4>
-      <p>记录的集合称为“数据集”，其中每条记录是关于一个事件或对象的描述，称为一个<font color="red"><b>示例(instance)或样本(sample)</b></font></p>
+        <h4 id="12-基本术语">
+          <a href="#12-基本术语" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#12-基本术语"></a> 1.2 基本术语</h4>
+      
+<p>记录的集合称为“数据集”，其中每条记录是关于一个事件或对象的描述，称为一个<font color="red"><b>示例(instance)或样本(sample)</b></font></p>
 <p>反映事件或对象在某方面的表现或性质的事项，称为<font color="red"><b>属性(attribute)或特征(feature)</b></font>,属性上的取值称为称为一个<font color="red"><b>属性值(attribute value)</b></font>。属性张成的空间称为<font color="red"><b>属性空间(attribute space)、样本空间(sample space)或输入空间</b></font>.由于空间中的每个点对应一个坐标向量，因此我们也把一个示例称为一个<font color="red"><b>特征向量(feature vector)</b></font></p>
-<p>从数据中学得模型的过程称为<font color="red"><b>学习或训练</b></font>，训练过程中使用的数据称为<font color="red"><b>训练数据即训练集</b></font>。学得模型对应了关于数据得某种潜在的规律，因此亦称<font color="red"><b>假设</b></font><br>，这种潜在规律自身，则称为<font color="red"><b>真相或真实</b></font>，学习过程就是为了找出或逼近真相。(本书有时将模型称为<font color="red"><b>学习器</b></font>)。</p>
+<p>从数据中学得模型的过程称为<font color="red"><b>学习或训练</b></font>，训练过程中使用的数据称为<font color="red"><b>训练数据即训练集</b></font>。学得模型对应了关于数据得某种潜在的规律，因此亦称<font color="red"><b>假设</b></font><br>
+，这种潜在规律自身，则称为<font color="red"><b>真相或真实</b></font>，学习过程就是为了找出或逼近真相。(本书有时将模型称为<font color="red"><b>学习器</b></font>)。</p>
 <p>关于示例结果的信息称为<font color="red"><b>标记(label)</b></font>,拥有标记信息的示例称为<font color="red"><b>样例(example)</b></font>。所有标记的集合亦称<font color="red"><b>标记空间(label space)或输出空间</b></font>。</p>
 <p>预测离散值的学习任务称为<font color="red"><b>分类(classification)</b></font>。预测的是连续值得学习任务称为<font color="red"><b>回归(regression)</b></font>.</p>
 <p>根据训练数据是否拥有标记信息，学习任务大致可划分为两大类<font color="red"><b>监督学习(supervised learning)</b></font>和<font color="red"><b>无监督学习(unsupervised learning)</b></font>,分类和回归是前者的代表，而聚类是后者的代表。</p>
 <p>学得模型适用于新样本的能力，称为<font color="red"><b>泛化(generaliazation)</b></font>。</p>
 
-        <h4 id="1-3-假设空间">
-          <a href="#1-3-假设空间" class="heading-link"><i class="fas fa-link"></i></a><a href="#1-3-假设空间" class="headerlink" title="1.3 假设空间"></a>1.3 假设空间</h4>
-      <font color="red"><b>归纳(induction)</b></font>和<font color="red"><b>演绎(deduction)</b></font>是科学推理的两大基本手段。前者是从特殊到一般的<font color="red"><b>泛化(generalization)</b></font>过程，后者则是从一般到特殊得<font color="red"><b>特化(specialization)</b></font>.
+        <h4 id="13-假设空间">
+          <a href="#13-假设空间" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#13-假设空间"></a> 1.3 假设空间</h4>
+      
+<p><font color="red"><b>归纳(induction)</b></font>和<font color="red"><b>演绎(deduction)</b></font>是科学推理的两大基本手段。前者是从特殊到一般的<font color="red"><b>泛化(generalization)</b></font>过程，后者则是从一般到特殊得<font color="red"><b>特化(specialization)</b></font>.</p>
+<p>我们可以把学习过程看做一个在所有<font color="red"><b>假设(hypothesis)</b></font>组成的空间中进行搜索的过程，搜索目标是找到与训练集<font color="red"><b>匹配(fit)</b></font>得假设。</p>
 
-我们可以把学习过程看做一个在所有<font color="red"><b>假设(hypothesis)</b></font>组成的空间中进行搜索的过程，搜索目标是找到与训练集<font color="red"><b>匹配(fit)</b></font>得假设。
-#### 1.4 归纳偏好
-机器学习算法在学习过程中对某种类型假设得偏好，称为<font color="red"><b>归纳偏好(inductive bias)</b></font>或简称为偏好。
+        <h4 id="14-归纳偏好">
+          <a href="#14-归纳偏好" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#14-归纳偏好"></a> 1.4 归纳偏好</h4>
+      
+<p>机器学习算法在学习过程中对某种类型假设得偏好，称为<font color="red"><b>归纳偏好(inductive bias)</b></font>或简称为偏好。</p>
+<p><font color="red"><b>奥卡姆剃刀(Occam’s razor)</b></font>如果关于同一个问题有许多种理论，每一种都能作出同样准确的预言，那么应该挑选其中使用假定最少的。尽管越复杂的方法通常能做出越好的预言，但是在不考虑预言能力（即结果大致相同）的情况下，假设越少越好。<br>
+<img src="/2022/01/18/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%91%A8%E5%BF%97%E5%8D%8E%E7%AC%AC%E4%B8%80%E4%BA%8C%E7%AB%A0/a1.png"><br>
+也就是说无论学习算法A多聪明，学习算法B多笨拙，他们的期望性能竟然相同，这就是<font color="red"><b>没有免费的午餐定理(No Free Lunch Theorem)</b></font>。</p>
+<p>但NFL有一个重要前提，所有问题出现的机会相同、或所有的问题同等重要，但实际情况并不是这样。很多情况我们只关注自己正在试图解决的问题，而对其在别的问题上得性能不甚关心。</p>
+<p>NFL最重要的寓意是让我们认识到，脱离具体问题，空泛的谈什么学习算法更好毫无意义，因为若考虑所有潜在问题，所有的学习算法一样好。</p>
+<p>####小结<br>
+自然科学研究的驱动力归结起来无外是人类对宇宙本源、万物本质、生命本性、自我本识的好奇。而人类如何学习无疑是一个有关自我本识的重大问题。</p>
 
-<font color="red"><b>奥卡姆剃刀(Occam's razor)</b></font>如果关于同一个问题有许多种理论，每一种都能作出同样准确的预言，那么应该挑选其中使用假定最少的。尽管越复杂的方法通常能做出越好的预言，但是在不考虑预言能力（即结果大致相同）的情况下，假设越少越好。
-<img src="/2022/01/18/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%91%A8%E5%BF%97%E5%8D%8E%E7%AC%AC%E4%B8%80%E4%BA%8C%E7%AB%A0/a1.png">
-也就是说无论学习算法A多聪明，学习算法B多笨拙，他们的期望性能竟然相同，这就是<font color="red"><b>没有免费的午餐定理(No Free Lunch Theorem)</b></font>。
+        <h3 id="第二章">
+          <a href="#第二章" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#第二章"></a> 第二章</h3>
+      
 
-但NFL有一个重要前提，所有问题出现的机会相同、或所有的问题同等重要，但实际情况并不是这样。很多情况我们只关注自己正在试图解决的问题，而对其在别的问题上得性能不甚关心。
+        <h4 id="21-经验误差与过拟合">
+          <a href="#21-经验误差与过拟合" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#21-经验误差与过拟合"></a> 2.1 经验误差与过拟合</h4>
+      
+<p>如果在m个样本中有a个样本分类错误，则<font color="red"><b>错误率</b></font> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mo>=</mo><mfrac><mi>a</mi><mi>m</mi></mfrac></mrow><annotation encoding="application/x-tex">E=\frac a m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.695392em;"></span><span class="strut bottom" style="height:1.040392em;vertical-align:-0.345em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="mrel">=</span><span class="mord reset-textstyle textstyle uncramped"><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.345em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">m</span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.394em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathit">a</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span></span></span></span>,相应的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo>−</mo><mfrac><mi>a</mi><mi>m</mi></mfrac></mrow><annotation encoding="application/x-tex">1-\frac a m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.695392em;"></span><span class="strut bottom" style="height:1.040392em;vertical-align:-0.345em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">1</span><span class="mbin">−</span><span class="mord reset-textstyle textstyle uncramped"><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.345em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">m</span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.394em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathit">a</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span></span></span></span>称为<font color="red"><b>精度</b></font>。更一般的，我们把学习器的实际预测输出与样本的真实输出之间得差异称为<font color="red"><b>误差(error)</b></font>，学习器在训练集上的误差称为<font color="red"><b>训练误差(training error)或经验误差(empirical error)</b></font>，在新样本上得误差称为<font color="red"><b>泛化误差(generalization error)</b></font>.</p>
+<p>当学习器把训练样本学习的太好了的时候，很可能已经把训练样本自身的一些特点当作了所有潜在样本都会具有的一般性质，这样就会导致泛化性能下降，这种现象在机器学习中称为<font color="red"><b>过拟合(overfitting)</b></font>，与其相对的是<font color="red"><b>欠拟合(underfitting)</b></font>，是指对训练样本的一般性质尚未学好。</p>
+<p><font color="red"><b>过拟合是无法避免的</b></font>。在此之前先介绍P与NP问题。</p>
+<pre><code>P问题是指可以在多项式时间内解决的问题
+NP问题是指可以在多项式时间内对结果进行验证的问题。
+而NP-hard问题则是未必可以在多项式时间内验证的问题
+</code></pre>
+<p>机器学习所要解决的问题通常是NP难甚至更难问题，而有效的学习算法则必然是在多项式时间内可完成的。我们的算法是P，但要解决的问题是NPhard问题，如果能避免过拟合，则说明P=NP，但事实上，对于NPhard问题是P!=NP的，据此我们可知过拟合无法避免。</p>
 
-NFL最重要的寓意是让我们认识到，脱离具体问题，空泛的谈什么学习算法更好毫无意义，因为若考虑所有潜在问题，所有的学习算法一样好。
+        <h4 id="22-评估方法">
+          <a href="#22-评估方法" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#22-评估方法"></a> 2.2 评估方法</h4>
+      
 
-####小结
-自然科学研究的驱动力归结起来无外是人类对宇宙本源、万物本质、生命本性、自我本识的好奇。而人类如何学习无疑是一个有关自我本识的重大问题。
+        <h5 id="221留出法">
+          <a href="#221留出法" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#221留出法"></a> 2.2.1留出法</h5>
+      
+<p><font color="red"><b>留出法(hold-out)</b></font>直接将数据集D分为两个互斥集合，其中一个作为训练集，另一个作为测试集。</p>
 
-### 第二章
-#### 2.1 经验误差与过拟合
+        <h5 id="222-k折交叉验证">
+          <a href="#222-k折交叉验证" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#222-k折交叉验证"></a> 2.2.2 k折交叉验证</h5>
+      
 
-如果在m个样本中有a个样本分类错误，则<font color="red"><b>错误率</b></font> $E=\frac a m$,相应的$1-\frac a m$称为<font color="red"><b>精度</b></font>。更一般的，我们把学习器的实际预测输出与样本的真实输出之间得差异称为<font color="red"><b>误差(error)</b></font>，学习器在训练集上的误差称为<font color="red"><b>训练误差(training error)或经验误差(empirical error)</b></font>，在新样本上得误差称为<font color="red"><b>泛化误差(generalization error)</b></font>.
+        <h5 id="223-自助法">
+          <a href="#223-自助法" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#223-自助法"></a> 2.2.3 自助法</h5>
+      
 
-当学习器把训练样本学习的太好了的时候，很可能已经把训练样本自身的一些特点当作了所有潜在样本都会具有的一般性质，这样就会导致泛化性能下降，这种现象在机器学习中称为<font color="red"><b>过拟合(overfitting)</b></font>，与其相对的是<font color="red"><b>欠拟合(underfitting)</b></font>，是指对训练样本的一般性质尚未学好。
+        <h5 id="224调参与最终模型">
+          <a href="#224调参与最终模型" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#224调参与最终模型"></a> 2.2.4调参与最终模型</h5>
+      
+<p>对于调参常用做法为选择一个范围和变化步长。</p>
 
-<font color="red"><b>过拟合是无法避免的</b></font>。在此之前先介绍P与NP问题。
-
-    P问题是指可以在多项式时间内解决的问题
-    NP问题是指可以在多项式时间内对结果进行验证的问题。
-    而NP-hard问题则是未必可以在多项式时间内验证的问题
-机器学习所要解决的问题通常是NP难甚至更难问题，而有效的学习算法则必然是在多项式时间内可完成的。我们的算法是P，但要解决的问题是NPhard问题，如果能避免过拟合，则说明P=NP，但事实上，对于NPhard问题是P!=NP的，据此我们可知过拟合无法避免。
-#### 2.2 评估方法
-##### 2.2.1留出法
-<font color="red"><b>留出法(hold-out)</b></font>直接将数据集D分为两个互斥集合，其中一个作为训练集，另一个作为测试集。
-
-##### 2.2.2 k折交叉验证
-##### 2.2.3 自助法
-##### 2.2.4调参与最终模型
-对于调参常用做法为选择一个范围和变化步长。
-#### 2.3 性能度量
-<font color="red"><b>均方误差</b></font>
-
+        <h4 id="23-性能度量">
+          <a href="#23-性能度量" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#23-性能度量"></a> 2.3 性能度量</h4>
+      
+<p><font color="red"><b>均方误差</b></font></p>
 <p>对于回归任务，常用的为</p>
-<script type="math/tex; mode=display">E=\frac 1 m \sum_{i=1}^m (f(x_i)-y)</script><p>更一般的，对于概率密度函数p(),则为</p>
-<script type="math/tex; mode=display">E=\int_x (f(x)-y)^2p(x)dx</script>
-        <h5 id="2-3-1-错误率与精度">
-          <a href="#2-3-1-错误率与精度" class="heading-link"><i class="fas fa-link"></i></a><a href="#2-3-1-错误率与精度" class="headerlink" title="2.3.1 错误率与精度"></a>2.3.1 错误率与精度</h5>
-      <p>将分类应用于概率密度的计算只是将求和转换为了对取值概率的积分</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mo>=</mo><mfrac><mn>1</mn><mi>m</mi></mfrac><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>m</mi></msubsup><mo>(</mo><mi>f</mi><mo>(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>)</mo><mo>−</mo><mi>y</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">E=\frac 1 m \sum_{i=1}^m (f(x_i)-y)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.6513970000000002em;"></span><span class="strut bottom" style="height:2.929066em;vertical-align:-1.277669em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="mrel">=</span><span class="mord reset-textstyle displaystyle textstyle uncramped"><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.686em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle cramped"><span class="mord mathit">m</span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.677em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped"><span class="mord mathrm">1</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span><span class="mop op-limits"><span class="vlist"><span style="top:1.1776689999999999em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit">i</span><span class="mrel">=</span><span class="mord mathrm">1</span></span></span></span><span style="top:-0.000005000000000143778em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span><span class="op-symbol large-op mop">∑</span></span></span><span style="top:-1.2500050000000003em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathit">m</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord"><span class="mord mathit">x</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">i</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose">)</span><span class="mbin">−</span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span></span></p>
+<p>更一般的，对于概率密度函数p(),则为</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mo>=</mo><msub><mo>∫</mo><mi>x</mi></msub><mo>(</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>−</mo><mi>y</mi><msup><mo>)</mo><mn>2</mn></msup><mi>p</mi><mo>(</mo><mi>x</mi><mo>)</mo><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex"> E=\int_x (f(x)-y)^2p(x)dx
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.36em;"></span><span class="strut bottom" style="height:2.27225em;vertical-align:-0.91225em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="mrel">=</span><span class="mop"><span class="op-symbol large-op mop" style="margin-right:0.44445em;top:-0.0011249999999999316em;">∫</span><span class="vlist"><span style="top:0.91225em;margin-right:0.05em;margin-left:-0.44445em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">x</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathit">x</span><span class="mclose">)</span><span class="mbin">−</span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mclose"><span class="mclose">)</span><span class="vlist"><span style="top:-0.413em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord mathit">p</span><span class="mopen">(</span><span class="mord mathit">x</span><span class="mclose">)</span><span class="mord mathit">d</span><span class="mord mathit">x</span></span></span></span></span></p>
 
-        <h5 id="2-3-2-准确率、召回率和F1">
-          <a href="#2-3-2-准确率、召回率和F1" class="heading-link"><i class="fas fa-link"></i></a><a href="#2-3-2-准确率、召回率和F1" class="headerlink" title="2.3.2 准确率、召回率和F1"></a>2.3.2 准确率、召回率和F1</h5>
-      <p><a href="https://www.razzzyz.cn/2021/11/20/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%AD%E7%9A%84%E8%AF%84%E4%BB%B7%E6%8C%87%E6%A0%87/">https://www.razzzyz.cn/2021/11/20/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%AD%E7%9A%84%E8%AF%84%E4%BB%B7%E6%8C%87%E6%A0%87/</a></p>
+        <h5 id="231-错误率与精度">
+          <a href="#231-错误率与精度" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#231-错误率与精度"></a> 2.3.1 错误率与精度</h5>
+      
+<p>将分类应用于概率密度的计算只是将求和转换为了对取值概率的积分</p>
 
-        <h5 id="2-3-4-代价敏感错误率与代价曲线">
-          <a href="#2-3-4-代价敏感错误率与代价曲线" class="heading-link"><i class="fas fa-link"></i></a><a href="#2-3-4-代价敏感错误率与代价曲线" class="headerlink" title="2.3.4 代价敏感错误率与代价曲线"></a>2.3.4 代价敏感错误率与代价曲线</h5>
-      <p>在计算错误率式对错判的示例加权计算进行惩罚</p>
+        <h5 id="232-准确率-召回率和f1">
+          <a href="#232-准确率-召回率和f1" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#232-准确率-召回率和f1"></a> 2.3.2 准确率、召回率和F1</h5>
+      
+<p><a href="https://www.razzzyz.cn/2021/11/20/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%AD%E7%9A%84%E8%AF%84%E4%BB%B7%E6%8C%87%E6%A0%87/">https://www.razzzyz.cn/2021/11/20/机器学习中的评价指标/</a></p>
 
-        <h4 id="2-4-假设检验">
-          <a href="#2-4-假设检验" class="heading-link"><i class="fas fa-link"></i></a><a href="#2-4-假设检验" class="headerlink" title="2.4 假设检验"></a>2.4 假设检验</h4>
-      <p>使用数理逻辑在可信度下进行验证</p>
+        <h5 id="234-代价敏感错误率与代价曲线">
+          <a href="#234-代价敏感错误率与代价曲线" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#234-代价敏感错误率与代价曲线"></a> 2.3.4 代价敏感错误率与代价曲线</h5>
+      
+<p>在计算错误率式对错判的示例加权计算进行惩罚</p>
 
-        <h4 id="2-5-偏差与方差">
-          <a href="#2-5-偏差与方差" class="heading-link"><i class="fas fa-link"></i></a><a href="#2-5-偏差与方差" class="headerlink" title="2.5 偏差与方差"></a>2.5 偏差与方差</h4>
-      <p>学习器的泛化误差可分解为偏差、方差与噪声之和。</p>
+        <h4 id="24-假设检验">
+          <a href="#24-假设检验" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#24-假设检验"></a> 2.4 假设检验</h4>
+      
+<p>使用数理逻辑在可信度下进行验证</p>
+
+        <h4 id="25-偏差与方差">
+          <a href="#25-偏差与方差" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#25-偏差与方差"></a> 2.5 偏差与方差</h4>
+      
+<p>学习器的泛化误差可分解为偏差、方差与噪声之和。</p>
 <p>偏差度量了学习算法的预期期望与真实结果的偏离程度，即刻画了学习算法本身的拟合能力。方差度量了同样大小的训练集的变动所导致的学习性能的变化，即刻画了数据扰动所造成的影响；噪声则表达了在当前任务上任何学习算法所能达到的期望泛化误差的下界，即刻画了学习问题本身的难度。</p>
 <p>偏差-方差分解说明，泛化性能是由学习算法的能力、数据的充分性以及学习任务本身的难度所共同决定的。</p>
 </div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://www.razzzyz.cn">RaZz</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://www.razzzyz.cn/2022/01/18/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%91%A8%E5%BF%97%E5%8D%8E%E7%AC%AC%E4%B8%80%E4%BA%8C%E7%AB%A0/">http://www.razzzyz.cn/2022/01/18/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%91%A8%E5%BF%97%E5%8D%8E%E7%AC%AC%E4%B8%80%E4%BA%8C%E7%AB%A0/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-cn" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://www.razzzyz.cn/tags/notes/">notes</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2022/03/22/hadoop%E9%85%8D%E7%BD%AE/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">hadoop配置</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2021/12/18/%E7%8A%B9%E5%A6%82%E5%B9%BB%E7%BF%B3%E5%BD%95/"><span class="paginator-prev__text">犹如幻翳录</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="valine-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0"><span class="toc-number">1.</span> <span class="toc-text">
-          第一章</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-%E5%BC%95%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text">
-          1.1 引言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-%E5%9F%BA%E6%9C%AC%E6%9C%AF%E8%AF%AD"><span class="toc-number">1.2.</span> <span class="toc-text">
-          1.2 基本术语</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-%E5%81%87%E8%AE%BE%E7%A9%BA%E9%97%B4"><span class="toc-number">1.3.</span> <span class="toc-text">
-          1.3 假设空间</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-1-%E9%94%99%E8%AF%AF%E7%8E%87%E4%B8%8E%E7%B2%BE%E5%BA%A6"><span class="toc-number">1.3.1.</span> <span class="toc-text">
-          2.3.1 错误率与精度</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-2-%E5%87%86%E7%A1%AE%E7%8E%87%E3%80%81%E5%8F%AC%E5%9B%9E%E7%8E%87%E5%92%8CF1"><span class="toc-number">1.3.2.</span> <span class="toc-text">
-          2.3.2 准确率、召回率和F1</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-4-%E4%BB%A3%E4%BB%B7%E6%95%8F%E6%84%9F%E9%94%99%E8%AF%AF%E7%8E%87%E4%B8%8E%E4%BB%A3%E4%BB%B7%E6%9B%B2%E7%BA%BF"><span class="toc-number">1.3.3.</span> <span class="toc-text">
-          2.3.4 代价敏感错误率与代价曲线</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C"><span class="toc-number">1.4.</span> <span class="toc-text">
-          2.4 假设检验</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-%E5%81%8F%E5%B7%AE%E4%B8%8E%E6%96%B9%E5%B7%AE"><span class="toc-number">1.5.</span> <span class="toc-text">
-          2.5 偏差与方差</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/头像.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">烂人</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/RaZzzyz" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="tencent://message?uin=913510915" target="_blank" rel="noopener" data-popover="social.QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="mailto:razzzhang@gmail.com" target="_blank" rel="noopener" data-popover="social.Gmail" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">Gmail</span></a><a class="sidebar-ov-social-item" href="mailto:913510915@qq.com" target="_blank" rel="noopener" data-popover="social.QQmail" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">QQ 邮箱</span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">11</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">6</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">10</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-cn" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v6.0.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"><input placeholder="搜索文章（支持多关键词，请用空格分隔）"></div><div class="search-results"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script>function initSearch() {
+           第一章</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#11-%E5%BC%95%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text">
+           1.1 引言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12-%E5%9F%BA%E6%9C%AC%E6%9C%AF%E8%AF%AD"><span class="toc-number">1.2.</span> <span class="toc-text">
+           1.2 基本术语</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#13-%E5%81%87%E8%AE%BE%E7%A9%BA%E9%97%B4"><span class="toc-number">1.3.</span> <span class="toc-text">
+           1.3 假设空间</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#14-%E5%BD%92%E7%BA%B3%E5%81%8F%E5%A5%BD"><span class="toc-number">1.4.</span> <span class="toc-text">
+           1.4 归纳偏好</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0"><span class="toc-number">2.</span> <span class="toc-text">
+           第二章</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#21-%E7%BB%8F%E9%AA%8C%E8%AF%AF%E5%B7%AE%E4%B8%8E%E8%BF%87%E6%8B%9F%E5%90%88"><span class="toc-number">2.1.</span> <span class="toc-text">
+           2.1 经验误差与过拟合</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#22-%E8%AF%84%E4%BC%B0%E6%96%B9%E6%B3%95"><span class="toc-number">2.2.</span> <span class="toc-text">
+           2.2 评估方法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#221%E7%95%99%E5%87%BA%E6%B3%95"><span class="toc-number">2.2.1.</span> <span class="toc-text">
+           2.2.1留出法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#222-k%E6%8A%98%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81"><span class="toc-number">2.2.2.</span> <span class="toc-text">
+           2.2.2 k折交叉验证</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#223-%E8%87%AA%E5%8A%A9%E6%B3%95"><span class="toc-number">2.2.3.</span> <span class="toc-text">
+           2.2.3 自助法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#224%E8%B0%83%E5%8F%82%E4%B8%8E%E6%9C%80%E7%BB%88%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.2.4.</span> <span class="toc-text">
+           2.2.4调参与最终模型</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#23-%E6%80%A7%E8%83%BD%E5%BA%A6%E9%87%8F"><span class="toc-number">2.3.</span> <span class="toc-text">
+           2.3 性能度量</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#231-%E9%94%99%E8%AF%AF%E7%8E%87%E4%B8%8E%E7%B2%BE%E5%BA%A6"><span class="toc-number">2.3.1.</span> <span class="toc-text">
+           2.3.1 错误率与精度</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#232-%E5%87%86%E7%A1%AE%E7%8E%87-%E5%8F%AC%E5%9B%9E%E7%8E%87%E5%92%8Cf1"><span class="toc-number">2.3.2.</span> <span class="toc-text">
+           2.3.2 准确率、召回率和F1</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#234-%E4%BB%A3%E4%BB%B7%E6%95%8F%E6%84%9F%E9%94%99%E8%AF%AF%E7%8E%87%E4%B8%8E%E4%BB%A3%E4%BB%B7%E6%9B%B2%E7%BA%BF"><span class="toc-number">2.3.3.</span> <span class="toc-text">
+           2.3.4 代价敏感错误率与代价曲线</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#24-%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C"><span class="toc-number">2.4.</span> <span class="toc-text">
+           2.4 假设检验</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#25-%E5%81%8F%E5%B7%AE%E4%B8%8E%E6%96%B9%E5%B7%AE"><span class="toc-number">2.5.</span> <span class="toc-text">
+           2.5 偏差与方差</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/头像.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">烂人</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/RaZzzyz" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="tencent://message?uin=913510915" target="_blank" rel="noopener" data-popover="social.QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a><a class="sidebar-ov-social-item" href="mailto:razzzhang@gmail.com" target="_blank" rel="noopener" data-popover="social.Gmail" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">Gmail</span></a><a class="sidebar-ov-social-item" href="mailto:913510915@qq.com" target="_blank" rel="noopener" data-popover="social.QQmail" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">QQ 邮箱</span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">11</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">6</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">10</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-cn" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v6.0.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"><input placeholder="搜索文章（支持多关键词，请用空格分隔）"></div><div class="search-results"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script>function initSearch() {
   var isXML = true;
   var search_path = 'search.json';
 
