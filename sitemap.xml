@@ -4,7 +4,7 @@
   <url>
     <loc>http://www.razzzyz.cn/2022/03/22/hadoop%E9%85%8D%E7%BD%AE/</loc>
     
-    <lastmod>2022-03-23</lastmod>
+    <lastmod>2022-03-25</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -121,7 +121,7 @@
 
   <url>
     <loc>http://www.razzzyz.cn/</loc>
-    <lastmod>2022-03-23</lastmod>
+    <lastmod>2022-03-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -129,70 +129,70 @@
   
   <url>
     <loc>http://www.razzzyz.cn/tags/web/</loc>
-    <lastmod>2022-03-23</lastmod>
+    <lastmod>2022-03-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://www.razzzyz.cn/tags/KG/</loc>
-    <lastmod>2022-03-23</lastmod>
+    <lastmod>2022-03-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://www.razzzyz.cn/tags/NLP/</loc>
-    <lastmod>2022-03-23</lastmod>
+    <lastmod>2022-03-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://www.razzzyz.cn/tags/NN/</loc>
-    <lastmod>2022-03-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.razzzyz.cn/tags/%E6%96%87%E5%AD%A6/</loc>
-    <lastmod>2022-03-23</lastmod>
+    <lastmod>2022-03-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://www.razzzyz.cn/tags/private/</loc>
-    <lastmod>2022-03-23</lastmod>
+    <lastmod>2022-03-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://www.razzzyz.cn/tags/RS/</loc>
-    <lastmod>2022-03-23</lastmod>
+    <lastmod>2022-03-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.razzzyz.cn/tags/%E6%96%87%E5%AD%A6/</loc>
+    <lastmod>2022-03-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://www.razzzyz.cn/tags/linux-hadoop/</loc>
-    <lastmod>2022-03-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.razzzyz.cn/tags/notes/</loc>
-    <lastmod>2022-03-23</lastmod>
+    <lastmod>2022-03-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://www.razzzyz.cn/tags/introduction/</loc>
-    <lastmod>2022-03-23</lastmod>
+    <lastmod>2022-03-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.razzzyz.cn/tags/notes/</loc>
+    <lastmod>2022-03-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -201,42 +201,42 @@
   
   <url>
     <loc>http://www.razzzyz.cn/categories/%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83/</loc>
-    <lastmod>2022-03-23</lastmod>
+    <lastmod>2022-03-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://www.razzzyz.cn/categories/KG/</loc>
-    <lastmod>2022-03-23</lastmod>
+    <lastmod>2022-03-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://www.razzzyz.cn/categories/NLP/</loc>
-    <lastmod>2022-03-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.razzzyz.cn/categories/%E6%96%87%E5%AD%A6/</loc>
-    <lastmod>2022-03-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.razzzyz.cn/categories/machinelearning/</loc>
-    <lastmod>2022-03-23</lastmod>
+    <lastmod>2022-03-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://www.razzzyz.cn/categories/RS/</loc>
-    <lastmod>2022-03-23</lastmod>
+    <lastmod>2022-03-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.razzzyz.cn/categories/%E6%96%87%E5%AD%A6/</loc>
+    <lastmod>2022-03-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.razzzyz.cn/categories/machinelearning/</loc>
+    <lastmod>2022-03-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
