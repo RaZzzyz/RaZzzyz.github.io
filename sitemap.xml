@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://www.razzzyz.cn/2022/03/22/hadoop%E9%85%8D%E7%BD%AE/</loc>
+    <loc>https://www.razzzyz.cn/google6b83c7462d4a48cc.html</loc>
     
     <lastmod>2022-04-28</lastmod>
     
@@ -11,7 +11,16 @@
   </url>
   
   <url>
-    <loc>http://www.razzzyz.cn/2022/01/18/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%91%A8%E5%BF%97%E5%8D%8E%E7%AC%AC%E4%B8%80%E4%BA%8C%E7%AB%A0/</loc>
+    <loc>https://www.razzzyz.cn/2022/03/22/hadoop%E9%85%8D%E7%BD%AE/</loc>
+    
+    <lastmod>2022-04-28</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.razzzyz.cn/2022/01/18/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%91%A8%E5%BF%97%E5%8D%8E%E7%AC%AC%E4%B8%80%E4%BA%8C%E7%AB%A0/</loc>
     
     <lastmod>2022-01-18</lastmod>
     
@@ -20,7 +29,7 @@
   </url>
   
   <url>
-    <loc>http://www.razzzyz.cn/2021/11/20/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%AD%E7%9A%84%E8%AF%84%E4%BB%B7%E6%8C%87%E6%A0%87/</loc>
+    <loc>https://www.razzzyz.cn/2021/11/20/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%AD%E7%9A%84%E8%AF%84%E4%BB%B7%E6%8C%87%E6%A0%87/</loc>
     
     <lastmod>2022-01-18</lastmod>
     
@@ -29,7 +38,7 @@
   </url>
   
   <url>
-    <loc>http://www.razzzyz.cn/2021/11/11/%E9%80%9D%E5%8E%BB%E7%9A%84ruo/</loc>
+    <loc>https://www.razzzyz.cn/2021/11/11/%E9%80%9D%E5%8E%BB%E7%9A%84ruo/</loc>
     
     <lastmod>2021-12-22</lastmod>
     
@@ -38,7 +47,7 @@
   </url>
   
   <url>
-    <loc>http://www.razzzyz.cn/2021/12/18/%E7%8A%B9%E5%A6%82%E5%B9%BB%E7%BF%B3%E5%BD%95/</loc>
+    <loc>https://www.razzzyz.cn/2021/12/18/%E7%8A%B9%E5%A6%82%E5%B9%BB%E7%BF%B3%E5%BD%95/</loc>
     
     <lastmod>2021-12-18</lastmod>
     
@@ -47,7 +56,7 @@
   </url>
   
   <url>
-    <loc>http://www.razzzyz.cn/2021/11/29/HITS-PageRank%E7%AE%97%E6%B3%95/</loc>
+    <loc>https://www.razzzyz.cn/2021/11/29/HITS-PageRank%E7%AE%97%E6%B3%95/</loc>
     
     <lastmod>2021-12-07</lastmod>
     
@@ -56,7 +65,7 @@
   </url>
   
   <url>
-    <loc>http://www.razzzyz.cn/2021/11/04/windows%E4%B8%8Bhexo-%E5%8D%8E%E4%B8%BA%E4%BA%91-github%E9%85%8D%E7%BD%AE%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc>
+    <loc>https://www.razzzyz.cn/2021/11/04/windows%E4%B8%8Bhexo-%E5%8D%8E%E4%B8%BA%E4%BA%91-github%E9%85%8D%E7%BD%AE%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc>
     
     <lastmod>2021-11-30</lastmod>
     
@@ -65,7 +74,7 @@
   </url>
   
   <url>
-    <loc>http://www.razzzyz.cn/2021/11/05/TransE%E6%A8%A1%E5%9E%8B%E5%8E%9F%E7%90%86/</loc>
+    <loc>https://www.razzzyz.cn/2021/11/05/TransE%E6%A8%A1%E5%9E%8B%E5%8E%9F%E7%90%86/</loc>
     
     <lastmod>2021-11-30</lastmod>
     
@@ -74,7 +83,7 @@
   </url>
   
   <url>
-    <loc>http://www.razzzyz.cn/2021/11/06/word2vec%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86/</loc>
+    <loc>https://www.razzzyz.cn/2021/11/06/word2vec%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86/</loc>
     
     <lastmod>2021-11-30</lastmod>
     
@@ -83,7 +92,7 @@
   </url>
   
   <url>
-    <loc>http://www.razzzyz.cn/2021/11/12/%E4%BD%9C%E8%80%85%E5%B7%B2%E6%AD%BB/</loc>
+    <loc>https://www.razzzyz.cn/2021/11/12/%E4%BD%9C%E8%80%85%E5%B7%B2%E6%AD%BB/</loc>
     
     <lastmod>2021-11-20</lastmod>
     
@@ -92,7 +101,7 @@
   </url>
   
   <url>
-    <loc>http://www.razzzyz.cn/tags/index.html</loc>
+    <loc>https://www.razzzyz.cn/tags/index.html</loc>
     
     <lastmod>2021-11-07</lastmod>
     
@@ -101,7 +110,7 @@
   </url>
   
   <url>
-    <loc>http://www.razzzyz.cn/categories/index.html</loc>
+    <loc>https://www.razzzyz.cn/categories/index.html</loc>
     
     <lastmod>2021-11-06</lastmod>
     
@@ -110,7 +119,7 @@
   </url>
   
   <url>
-    <loc>http://www.razzzyz.cn/2021/11/04/hello/</loc>
+    <loc>https://www.razzzyz.cn/2021/11/04/hello/</loc>
     
     <lastmod>2021-11-06</lastmod>
     
@@ -120,7 +129,7 @@
   
 
   <url>
-    <loc>http://www.razzzyz.cn/</loc>
+    <loc>https://www.razzzyz.cn/</loc>
     <lastmod>2022-04-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -128,70 +137,70 @@
 
   
   <url>
-    <loc>http://www.razzzyz.cn/tags/web/</loc>
+    <loc>https://www.razzzyz.cn/tags/web/</loc>
     <lastmod>2022-04-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://www.razzzyz.cn/tags/KG/</loc>
+    <loc>https://www.razzzyz.cn/tags/NLP/</loc>
     <lastmod>2022-04-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://www.razzzyz.cn/tags/NLP/</loc>
+    <loc>https://www.razzzyz.cn/tags/NN/</loc>
     <lastmod>2022-04-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://www.razzzyz.cn/tags/NN/</loc>
+    <loc>https://www.razzzyz.cn/tags/KG/</loc>
     <lastmod>2022-04-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://www.razzzyz.cn/tags/private/</loc>
+    <loc>https://www.razzzyz.cn/tags/private/</loc>
     <lastmod>2022-04-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://www.razzzyz.cn/tags/RS/</loc>
+    <loc>https://www.razzzyz.cn/tags/%E6%96%87%E5%AD%A6/</loc>
     <lastmod>2022-04-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://www.razzzyz.cn/tags/%E6%96%87%E5%AD%A6/</loc>
+    <loc>https://www.razzzyz.cn/tags/RS/</loc>
     <lastmod>2022-04-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://www.razzzyz.cn/tags/linux-hadoop/</loc>
+    <loc>https://www.razzzyz.cn/tags/notes/</loc>
     <lastmod>2022-04-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://www.razzzyz.cn/tags/introduction/</loc>
+    <loc>https://www.razzzyz.cn/tags/linux-hadoop/</loc>
     <lastmod>2022-04-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://www.razzzyz.cn/tags/notes/</loc>
+    <loc>https://www.razzzyz.cn/tags/introduction/</loc>
     <lastmod>2022-04-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -200,42 +209,42 @@
 
   
   <url>
-    <loc>http://www.razzzyz.cn/categories/%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83/</loc>
+    <loc>https://www.razzzyz.cn/categories/%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83/</loc>
     <lastmod>2022-04-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://www.razzzyz.cn/categories/KG/</loc>
+    <loc>https://www.razzzyz.cn/categories/NLP/</loc>
     <lastmod>2022-04-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://www.razzzyz.cn/categories/NLP/</loc>
+    <loc>https://www.razzzyz.cn/categories/KG/</loc>
     <lastmod>2022-04-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://www.razzzyz.cn/categories/RS/</loc>
+    <loc>https://www.razzzyz.cn/categories/%E6%96%87%E5%AD%A6/</loc>
     <lastmod>2022-04-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://www.razzzyz.cn/categories/machinelearning/</loc>
+    <loc>https://www.razzzyz.cn/categories/machinelearning/</loc>
     <lastmod>2022-04-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://www.razzzyz.cn/categories/%E6%96%87%E5%AD%A6/</loc>
+    <loc>https://www.razzzyz.cn/categories/RS/</loc>
     <lastmod>2022-04-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
