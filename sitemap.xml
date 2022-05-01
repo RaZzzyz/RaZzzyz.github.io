@@ -2,16 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://www.razzzyz.cn/google6b83c7462d4a48cc.html</loc>
+    <loc>https://www.razzzyz.cn/2022/03/22/hadoop%E9%85%8D%E7%BD%AE/</loc>
     
-    <lastmod>2022-04-28</lastmod>
+    <lastmod>2022-05-01</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.razzzyz.cn/2022/03/22/hadoop%E9%85%8D%E7%BD%AE/</loc>
+    <loc>https://www.razzzyz.cn/google6b83c7462d4a48cc.html</loc>
     
     <lastmod>2022-04-28</lastmod>
     
@@ -151,20 +151,6 @@
   </url>
   
   <url>
-    <loc>https://www.razzzyz.cn/tags/NLP/</loc>
-    <lastmod>2022-05-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.razzzyz.cn/tags/NN/</loc>
-    <lastmod>2022-05-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.razzzyz.cn/tags/private/</loc>
     <lastmod>2022-05-01</lastmod>
     <changefreq>weekly</changefreq>
@@ -173,6 +159,20 @@
   
   <url>
     <loc>https://www.razzzyz.cn/tags/%E6%96%87%E5%AD%A6/</loc>
+    <lastmod>2022-05-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.razzzyz.cn/tags/NLP/</loc>
+    <lastmod>2022-05-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.razzzyz.cn/tags/NN/</loc>
     <lastmod>2022-05-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -223,13 +223,6 @@
   </url>
   
   <url>
-    <loc>https://www.razzzyz.cn/categories/NLP/</loc>
-    <lastmod>2022-05-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.razzzyz.cn/categories/%E6%96%87%E5%AD%A6/</loc>
     <lastmod>2022-05-01</lastmod>
     <changefreq>weekly</changefreq>
@@ -238,6 +231,13 @@
   
   <url>
     <loc>https://www.razzzyz.cn/categories/machinelearning/</loc>
+    <lastmod>2022-05-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.razzzyz.cn/categories/NLP/</loc>
     <lastmod>2022-05-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
