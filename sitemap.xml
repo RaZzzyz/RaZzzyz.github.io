@@ -65,6 +65,13 @@
 
   
   <url>
+    <loc>http://www.razzzyz.github.io/tags/sort/</loc>
+    <lastmod>2024-04-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://www.razzzyz.github.io/tags/word-embedding/</loc>
     <lastmod>2024-04-20</lastmod>
     <changefreq>weekly</changefreq>
@@ -78,24 +85,17 @@
     <priority>0.2</priority>
   </url>
   
-  <url>
-    <loc>http://www.razzzyz.github.io/tags/sort/</loc>
-    <lastmod>2024-04-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
 
   
   <url>
-    <loc>http://www.razzzyz.github.io/categories/NLP/</loc>
+    <loc>http://www.razzzyz.github.io/categories/Recommendation/</loc>
     <lastmod>2024-04-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://www.razzzyz.github.io/categories/Recommendation/</loc>
+    <loc>http://www.razzzyz.github.io/categories/NLP/</loc>
     <lastmod>2024-04-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
