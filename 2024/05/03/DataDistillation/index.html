@@ -1,0 +1,445 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.8.0" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.8.0" type="image/png" sizes="32x32"><meta name="google-site-verification" content="Uj5COIZ_QouSvahhiDEimTVxloNw4JubWQsPykr0yHw"><meta name="description" content="这篇文章讲述了knowledgeDistillation领域的数据集蒸馏">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DataDistillation">
+<meta property="og:url" content="http://www.razzzyz.github.io/2024/05/03/DataDistillation/index.html">
+<meta property="og:site_name" content="RaZz的博客">
+<meta property="og:description" content="这篇文章讲述了knowledgeDistillation领域的数据集蒸馏">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/ddal1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/ddimpl.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/ddshow1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/ddshow2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/dcal1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/dcal2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/dcshow1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/dcshow2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/dsaal1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/dsashow1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/dsashow2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/idcil.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/idcal1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/idcal2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/dsashow3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/idcshow2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/idcshow1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/mdfal.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/mdfal1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/emfal3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/emfshow1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/emfshow2.png">
+<meta property="article:published_time" content="2024-05-02T16:02:53.000Z">
+<meta property="article:modified_time" content="2024-05-03T02:39:28.577Z">
+<meta property="article:author" content="RaZz">
+<meta property="article:tag" content="data distillation">
+<meta property="article:tag" content="gradient">
+<meta property="article:tag" content="gan">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/ddal1.png"><title>DataDistillation | RaZz的博客</title><link ref="canonical" href="http://www.razzzyz.github.io/2024/05/03/DataDistillation/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.8.0"><link rel="stylesheet" href="css/custom.css"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 7.2.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Share my stories</div><div class="header-banner-info__subtitle">Struggle for Better</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">DataDistillation</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2024-05-03</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2024-05-03</span></span></div></header><div class="post-body"><p>readpaper分享链接:https://readpaper.com/user/collect/2269161170068057344</p>
+
+        <h2 id="dataset-distillation">
+          <a href="#dataset-distillation" class="heading-link"><i class="fas fa-link"></i></a>DATASET DISTILLATION</h2>
+      
+
+        <h3 id="publication-2018-arxiv">
+          <a href="#publication-2018-arxiv" class="heading-link"><i class="fas fa-link"></i></a>publication: 2018 arxiv</h3>
+      
+<p>Facebook AI Research ###
+github：https://github.com/ssnl/dataset-distillation ### 想法: ####
+传统方法
+传统对于数据集缩小的方法，都是挑选数据集中存在的数据作为子集。其是启发性的搜索，并且在数据集中无明显代表性的数据时理论上就是不合理的
+#### 提出的方法
+以优化神经网络参数的方式，来优化数据集。在代码实现中表现为，先用高斯分布生成指定数量的<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="1.294ex" height="1.771ex" role="img" focusable="false" viewBox="0 -772 572 783"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mover"><g data-mml-node="mi"><path data-c="1D465" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path></g><g data-mml-node="mo" transform="translate(313.8,-50) translate(-278 0)"><path data-c="2DC" d="M374 597Q337 597 269 627T160 658Q101 658 34 606L24 597L12 611Q1 624 1 626Q1 627 27 648T55 671Q120 722 182 722Q219 722 286 692T395 661Q454 661 521 713L531 722L543 708Q554 695 554 693Q554 692 528 671T500 648Q434 597 374 597Z"></path></g></g></g></g></g></svg></mjx-container></span>,然后通过梯度反向传播的方式来优化迭代<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="1.294ex" height="1.771ex" role="img" focusable="false" viewBox="0 -772 572 783"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mover"><g data-mml-node="mi"><path data-c="1D465" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path></g><g data-mml-node="mo" transform="translate(313.8,-50) translate(-278 0)"><path data-c="2DC" d="M374 597Q337 597 269 627T160 658Q101 658 34 606L24 597L12 611Q1 624 1 626Q1 627 27 648T55 671Q120 722 182 722Q219 722 286 692T395 661Q454 661 521 713L531 722L543 708Q554 695 554 693Q554 692 528 671T500 648Q434 597 374 597Z"></path></g></g></g></g></g></svg></mjx-container></span>，得到distillation
+dataset.</p>
+
+        <h3 id="算法逻辑">
+          <a href="#算法逻辑" class="heading-link"><i class="fas fa-link"></i></a>算法逻辑:</h3>
+      
+<p><img src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/ddal1.png"></p>
+
+        <h3 id="实现细节">
+          <a href="#实现细节" class="heading-link"><i class="fas fa-link"></i></a>实现细节:</h3>
+      
+<p><img src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/ddimpl.png">
+可以看到，其对于蒸馏的数据生成是采用了高斯分布进行初始化的随机数据。 ###
+示意图: <img src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/ddshow1.png"></p>
+<ul>
+<li>Random real images: We randomly sample the same number of real
+images per category.</li>
+<li>Optimized real images: We sample different sets of random real
+images as above, and choose the top 20% best performing sets.</li>
+<li>k-means: We apply k-means clustering to each category, and use the
+cluster centroids as training images.</li>
+<li>Average real images: We compute the average image for each category,
+which is reused in different GD steps. <img src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/ddshow2.png">
+### 缺点 或 问题: 作者在文中提到DD对于参数的初始化很敏感，对于<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.023ex;" xmlns="http://www.w3.org/2000/svg" width="1.061ex" height="1.618ex" role="img" focusable="false" viewBox="0 -705 469 715"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D703" d="M35 200Q35 302 74 415T180 610T319 704Q320 704 327 704T339 705Q393 701 423 656Q462 596 462 495Q462 380 417 261T302 66T168 -10H161Q125 -10 99 10T60 63T41 130T35 200ZM383 566Q383 668 330 668Q294 668 260 623T204 521T170 421T157 371Q206 370 254 370L351 371Q352 372 359 404T375 484T383 566ZM113 132Q113 26 166 26Q181 26 198 36T239 74T287 161T335 307L340 324H145Q145 321 136 286T120 208T113 132Z"></path></g></g></g></svg></mjx-container></span>进行的蒸馏数据集，可能只适用于<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.023ex;" xmlns="http://www.w3.org/2000/svg" width="1.061ex" height="1.618ex" role="img" focusable="false" viewBox="0 -705 469 715"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D703" d="M35 200Q35 302 74 415T180 610T319 704Q320 704 327 704T339 705Q393 701 423 656Q462 596 462 495Q462 380 417 261T302 66T168 -10H161Q125 -10 99 10T60 63T41 130T35 200ZM383 566Q383 668 330 668Q294 668 260 623T204 521T170 421T157 371Q206 370 254 370L351 371Q352 372 359 404T375 484T383 566ZM113 132Q113 26 166 26Q181 26 198 36T239 74T287 161T335 307L340 324H145Q145 321 136 286T120 208T113 132Z"></path></g></g></g></svg></mjx-container></span>，在文中的解决办法也只是应用了多个初始化。</li>
+</ul>
+
+        <h2 id="dataset-condensation-with-gradient-matching">
+          <a href="#dataset-condensation-with-gradient-matching" class="heading-link"><i class="fas fa-link"></i></a>DATASET
+CONDENSATION WITH GRADIENT MATCHING</h2>
+      
+
+        <h3 id="publication-iclr-2021">
+          <a href="#publication-iclr-2021" class="heading-link"><i class="fas fa-link"></i></a>publication: ICLR 2021</h3>
+      
+
+        <h3 id="githubhttpsgithub.comvico-uoedatasetcondensation">
+          <a href="#githubhttpsgithub.comvico-uoedatasetcondensation" class="heading-link"><i class="fas fa-link"></i></a>github:https://github.com/VICO-UoE/DatasetCondensation</h3>
+      
+
+        <h3 id="想法">
+          <a href="#想法" class="heading-link"><i class="fas fa-link"></i></a>想法:</h3>
+      
+
+        <h4 id="传统方法">
+          <a href="#传统方法" class="heading-link"><i class="fas fa-link"></i></a>传统方法:</h4>
+      
+<p>启发式方法选择数据集的子集。 #### 提出方法：
+与DD相同，获得一个人工数据集，使模型可以通过其来获得较高的泛化性。</p>
+<p>但DD存在一些他提出的问题。他定义了两个数据集，原始的为T，人造的为S，他说直接用神经网络的参数<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.023ex;" xmlns="http://www.w3.org/2000/svg" width="1.061ex" height="1.618ex" role="img" focusable="false" viewBox="0 -705 469 715"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D703" d="M35 200Q35 302 74 415T180 610T319 704Q320 704 327 704T339 705Q393 701 423 656Q462 596 462 495Q462 380 417 261T302 66T168 -10H161Q125 -10 99 10T60 63T41 130T35 200ZM383 566Q383 668 330 668Q294 668 260 623T204 521T170 421T157 371Q206 370 254 370L351 371Q352 372 359 404T375 484T383 566ZM113 132Q113 26 166 26Q181 26 198 36T239 74T287 161T335 307L340 324H145Q145 321 136 286T120 208T113 132Z"></path></g></g></g></svg></mjx-container></span>在T和S上对齐可能是不可能实现的，于是他基于此提出了自己的方法。</p>
+<p>他的思想是对比两个数据集上的梯度，优化目标是使得两个数据集的梯度尽可能相似。也即提出了一种数据集的度量指标即数学特征：模型在数据集上的梯度。</p>
+
+        <h3 id="算法逻辑-1">
+          <a href="#算法逻辑-1" class="heading-link"><i class="fas fa-link"></i></a>算法逻辑:</h3>
+      
+<p><img src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/dcal1.png">
+其中<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="12.527ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 5537.1 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D45C" d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z"></path></g><g data-mml-node="mi" transform="translate(485,0)"><path data-c="1D45D" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path></g><g data-mml-node="mi" transform="translate(988,0)"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path></g><g data-mml-node="mo" transform="translate(1571.2,0)"><path data-c="2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path></g><g data-mml-node="mi" transform="translate(2571.4,0)"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path></g><g data-mml-node="mi" transform="translate(3100.4,0)"><path data-c="1D459" d="M117 59Q117 26 142 26Q179 26 205 131Q211 151 215 152Q217 153 225 153H229Q238 153 241 153T246 151T248 144Q247 138 245 128T234 90T214 43T183 6T137 -11Q101 -11 70 11T38 85Q38 97 39 102L104 360Q167 615 167 623Q167 626 166 628T162 632T157 634T149 635T141 636T132 637T122 637Q112 637 109 637T101 638T95 641T94 647Q94 649 96 661Q101 680 107 682T179 688Q194 689 213 690T243 693T254 694Q266 694 266 686Q266 675 193 386T118 83Q118 81 118 75T117 65V59Z"></path></g><g data-mml-node="mi" transform="translate(3398.4,0)"><path data-c="1D454" d="M311 43Q296 30 267 15T206 0Q143 0 105 45T66 160Q66 265 143 353T314 442Q361 442 401 394L404 398Q406 401 409 404T418 412T431 419T447 422Q461 422 470 413T480 394Q480 379 423 152T363 -80Q345 -134 286 -169T151 -205Q10 -205 10 -137Q10 -111 28 -91T74 -71Q89 -71 102 -80T116 -111Q116 -121 114 -130T107 -144T99 -154T92 -162L90 -164H91Q101 -167 151 -167Q189 -167 211 -155Q234 -144 254 -122T282 -75Q288 -56 298 -13Q311 35 311 43ZM384 328L380 339Q377 350 375 354T369 368T359 382T346 393T328 402T306 405Q262 405 221 352Q191 313 171 233T151 117Q151 38 213 38Q269 38 323 108L331 118L384 328Z"></path></g><g data-mml-node="msub" transform="translate(3875.4,0)"><g data-mml-node="mi"><path data-c="1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"></path></g><g data-mml-node="mi" transform="translate(502,-150) scale(0.707)"><path data-c="1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"></path></g></g><g data-mml-node="mo" transform="translate(4759.1,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mo" transform="translate(5148.1,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container></span>是一种有限步优化的方法，不是论文的重点。
+### 实现细节: <img src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/dcal2.png">
+可以看出，他是从真实图像中随机取了ipc张，然后进行优化的</p>
+
+        <h3 id="示意图">
+          <a href="#示意图" class="heading-link"><i class="fas fa-link"></i></a>示意图:</h3>
+      
+<p><img src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/dcshow1.png">
+<img src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/dcshow2.png"></p>
+
+        <h3 id="缺点-或-问题">
+          <a href="#缺点-或-问题" class="heading-link"><i class="fas fa-link"></i></a>缺点 或 问题:</h3>
+      
+<p>论文在刚开始时提出了模型在S和T上的参数是不同的，又基于这两个数据集的参数可能很难对齐，然后提出了使用梯度进行比较数据集距离的方法，然后在后续的证明中又说在实验中发现D(S,T)close
+to zero,然后将其优化为一个参数???</p>
+<p>像是先射箭再画靶；直接使用S,T进行优化理论上比较困难且存在一定问题-&gt;我们希望他们的距离尽可能小并且遵循相似的路径-&gt;于是我们采用了梯度,(并且我们发现他们的D就是小，于是我们用其中一个替代了参数).</p>
+<p>没有在较大的数据集上进行测试</p>
+
+        <h2 id="dataset-condensation-with-differentiable-siamese-augmentation">
+          <a href="#dataset-condensation-with-differentiable-siamese-augmentation" class="heading-link"><i class="fas fa-link"></i></a>Dataset
+Condensation with Differentiable Siamese Augmentation</h2>
+      
+
+        <h3 id="publication-iclr-2021-与dc是相同作者">
+          <a href="#publication-iclr-2021-与dc是相同作者" class="heading-link"><i class="fas fa-link"></i></a>publication: ICLR 2021
+，与DC是相同作者</h3>
+      
+
+        <h3 id="githubhttpsgithub.comvico-uoedatasetcondensation-1">
+          <a href="#githubhttpsgithub.comvico-uoedatasetcondensation-1" class="heading-link"><i class="fas fa-link"></i></a>github:https://github.com/VICO-UoE/DatasetCondensation</h3>
+      
+
+        <h3 id="想法-1">
+          <a href="#想法-1" class="heading-link"><i class="fas fa-link"></i></a>想法:</h3>
+      
+<p>现有的方法在合成数据集与完整数据集上的效果仍有很大差距；受启发于数据增强的效果，作者将数据增强融入到数据集构造中。</p>
+
+        <h3 id="算法逻辑-2">
+          <a href="#算法逻辑-2" class="heading-link"><i class="fas fa-link"></i></a>算法逻辑:</h3>
+      
+<p><img src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/dsaal1.png">
+与DC不同，在DSA中，参数与图像的更新均用SGD代替opt-algs,在实现中，DC和DSA的代码都用的sgd作为优化器。
+### 实现细节: -
+为了保证学习到图像增强后原本图像中存在的信息，选择对T和S进行相同的增强
+### 示意图: <img src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/dsashow1.png">
+<img src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/dsashow2.png"></p>
+
+        <h3 id="缺点-或-问题-1">
+          <a href="#缺点-或-问题-1" class="heading-link"><i class="fas fa-link"></i></a>缺点 或 问题:</h3>
+      
+<p>404</p>
+
+        <h2 id="dataset-condensation-via-efficient-synthetic-data-parameterization">
+          <a href="#dataset-condensation-via-efficient-synthetic-data-parameterization" class="heading-link"><i class="fas fa-link"></i></a>Dataset
+Condensation via Efficient Synthetic-Data Parameterization</h2>
+      
+
+        <h3 id="publication-iclr-2022">
+          <a href="#publication-iclr-2022" class="heading-link"><i class="fas fa-link"></i></a>publication: ICLR 2022</h3>
+      
+
+        <h3 id="githubhttpsgithub.comsnu-mllabefficient-dataset-condensation">
+          <a href="#githubhttpsgithub.comsnu-mllabefficient-dataset-condensation" class="heading-link"><i class="fas fa-link"></i></a>github:https://github.com/snu-mllab/Efficient-Dataset-Condensation</h3>
+      
+
+        <h3 id="想法-2">
+          <a href="#想法-2" class="heading-link"><i class="fas fa-link"></i></a>想法:</h3>
+      
+
+        <h4 id="dc-dsa">
+          <a href="#dc-dsa" class="heading-link"><i class="fas fa-link"></i></a>DC &amp; DSA:</h4>
+      
+<p>通过反向传播优化图像相当于对图像的每个像素进行优化，没有对合成图像引入规律性条件(个人理解为专家知识).也即没有更强的约束条件，存在解!=一定能找到解。就像全连接与卷积网络一样。
+#### 本文方法:
+DC提出的梯度范数是有问题的，本文优化了优化并提出了新方法。</p>
+<p>终极目标是
+通过模型在S上的训练，提高在测试集上的表现，但这个目标太难实现，大家都采用中间目标来进行优化。DD是通过参数的改变，优化在T上的表现。而DC和DSA则是通过参数的梯度。
+<img src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/idcil.png">
+基于一种观测:随着S中每类图像数量的增加，match
+loss降低，也即IPC越高，在S上的表现越好，于是作者提出了一种Multi-scaleformation的映射函数，不改变S的大小，而降S映射到另一个空间<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.05ex;" xmlns="http://www.w3.org/2000/svg" width="2.204ex" height="1.767ex" role="img" focusable="false" viewBox="0 -759 974.1 781"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="mi"><path data-c="1D446" d="M308 24Q367 24 416 76T466 197Q466 260 414 284Q308 311 278 321T236 341Q176 383 176 462Q176 523 208 573T273 648Q302 673 343 688T407 704H418H425Q521 704 564 640Q565 640 577 653T603 682T623 704Q624 704 627 704T632 705Q645 705 645 698T617 577T585 459T569 456Q549 456 549 465Q549 471 550 475Q550 478 551 494T553 520Q553 554 544 579T526 616T501 641Q465 662 419 662Q362 662 313 616T263 510Q263 480 278 458T319 427Q323 425 389 408T456 390Q490 379 522 342T554 242Q554 216 546 186Q541 164 528 137T492 78T426 18T332 -20Q320 -22 298 -22Q199 -22 144 33L134 44L106 13Q83 -14 78 -18T65 -22Q52 -22 52 -14Q52 -11 110 221Q112 227 130 227H143Q149 221 149 216Q149 214 148 207T144 186T142 153Q144 114 160 87T203 47T255 29T308 24Z"></path></g><g data-mml-node="mo" transform="translate(729.6,363) scale(0.707)"><path data-c="2035" d="M12 501Q12 527 31 542T63 558Q73 560 77 560Q114 560 128 528Q133 518 188 293T244 61Q244 56 223 50T195 43Q192 43 190 45T102 263T14 486Q12 496 12 501Z"></path></g></g></g></g></svg></mjx-container></span>，用<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.05ex;" xmlns="http://www.w3.org/2000/svg" width="2.204ex" height="1.767ex" role="img" focusable="false" viewBox="0 -759 974.1 781"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="mi"><path data-c="1D446" d="M308 24Q367 24 416 76T466 197Q466 260 414 284Q308 311 278 321T236 341Q176 383 176 462Q176 523 208 573T273 648Q302 673 343 688T407 704H418H425Q521 704 564 640Q565 640 577 653T603 682T623 704Q624 704 627 704T632 705Q645 705 645 698T617 577T585 459T569 456Q549 456 549 465Q549 471 550 475Q550 478 551 494T553 520Q553 554 544 579T526 616T501 641Q465 662 419 662Q362 662 313 616T263 510Q263 480 278 458T319 427Q323 425 389 408T456 390Q490 379 522 342T554 242Q554 216 546 186Q541 164 528 137T492 78T426 18T332 -20Q320 -22 298 -22Q199 -22 144 33L134 44L106 13Q83 -14 78 -18T65 -22Q52 -22 52 -14Q52 -11 110 221Q112 227 130 227H143Q149 221 149 216Q149 214 148 207T144 186T142 153Q144 114 160 87T203 47T255 29T308 24Z"></path></g><g data-mml-node="mo" transform="translate(729.6,363) scale(0.707)"><path data-c="2035" d="M12 501Q12 527 31 542T63 558Q73 560 77 560Q114 560 128 528Q133 518 188 293T244 61Q244 56 223 50T195 43Q192 43 190 45T102 263T14 486Q12 496 12 501Z"></path></g></g></g></g></svg></mjx-container></span>来与目标D进行优化，再反向传播到S中。相较于数据增强，引入了另一种改变图像的方法。
+### 算法逻辑： <img src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/idcal1.png">
+为什么相较于DSA,使用了T来更新参数<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.023ex;" xmlns="http://www.w3.org/2000/svg" width="1.061ex" height="1.618ex" role="img" focusable="false" viewBox="0 -705 469 715"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D703" d="M35 200Q35 302 74 415T180 610T319 704Q320 704 327 704T339 705Q393 701 423 656Q462 596 462 495Q462 380 417 261T302 66T168 -10H161Q125 -10 99 10T60 63T41 130T35 200ZM383 566Q383 668 330 668Q294 668 260 623T204 521T170 421T157 371Q206 370 254 370L351 371Q352 372 359 404T375 484T383 566ZM113 132Q113 26 166 26Q181 26 198 36T239 74T287 161T335 307L340 324H145Q145 321 136 286T120 208T113 132Z"></path></g></g></g></svg></mjx-container></span>,因为作者观察到 <img src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/idcal2.png">
+S与<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.023ex;" xmlns="http://www.w3.org/2000/svg" width="1.061ex" height="1.618ex" role="img" focusable="false" viewBox="0 -705 469 715"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D703" d="M35 200Q35 302 74 415T180 610T319 704Q320 704 327 704T339 705Q393 701 423 656Q462 596 462 495Q462 380 417 261T302 66T168 -10H161Q125 -10 99 10T60 63T41 130T35 200ZM383 566Q383 668 330 668Q294 668 260 623T204 521T170 421T157 371Q206 370 254 370L351 371Q352 372 359 404T375 484T383 566ZM113 132Q113 26 166 26Q181 26 198 36T239 74T287 161T335 307L340 324H145Q145 321 136 286T120 208T113 132Z"></path></g></g></g></svg></mjx-container></span>强耦合，若用S来更新，其L1范数会很快收敛，所以采用了T。
+### 实现细节:
+采用了高斯分布随机生成数据，而没用DC和DSA的从数据集中随机采集的方法。值得商榷
+<img src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/dsashow3.png">
+DSA有特征图，说采用原始图像会保留物体的姿态和颜色，但IDC可能不想被原始图像干扰？
+### 示意图: <img src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/idcshow2.png">
+<img src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/idcshow1.png"></p>
+
+        <h3 id="缺点-或-问题-2">
+          <a href="#缺点-或-问题-2" class="heading-link"><i class="fas fa-link"></i></a>缺点 或 问题:</h3>
+      
+<p>为什么不直接提高S或者在S中引入函数，也即从根本上使用f对S进行改变，而是通过f将S映射到新空间。是因为优化可能引入递归？</p>
+
+        <h2 id="efficient-dataset-distillation-via-minimax-diffusion">
+          <a href="#efficient-dataset-distillation-via-minimax-diffusion" class="heading-link"><i class="fas fa-link"></i></a>Efficient
+Dataset Distillation via Minimax Diffusion</h2>
+      
+
+        <h3 id="publication-cvpr-2024">
+          <a href="#publication-cvpr-2024" class="heading-link"><i class="fas fa-link"></i></a>publication: CVPR 2024</h3>
+      
+
+        <h3 id="githubhttpsgithub.comvimar-guminimaxdiffusion">
+          <a href="#githubhttpsgithub.comvimar-guminimaxdiffusion" class="heading-link"><i class="fas fa-link"></i></a>github:https://github.com/vimar-gu/MinimaxDiffusion</h3>
+      
+
+        <h3 id="想法-3">
+          <a href="#想法-3" class="heading-link"><i class="fas fa-link"></i></a>想法:</h3>
+      
+
+        <h4 id="传统样本迭代方法">
+          <a href="#传统样本迭代方法" class="heading-link"><i class="fas fa-link"></i></a>传统样本迭代方法:</h4>
+      
+<p>DC,DSA,IDC其优化空间与分辨率，图像数量呈正相关，为了更好的效果，必不可少的有更大的计算资源。
+<img src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/mdfal.png">
+#### 本文方法: 使用生成扩散技术，以及观察结果，基于数据集的
+representativeness 和diversity生成样本S。</p>
+<p>也即使用diffusion，并且通过人工经验定义了两个优化目标，来得到一个数据集S。表现好并且相较于传统样本迭代方法，生成数据近似O(1).</p>
+
+        <h3 id="算法逻辑-3">
+          <a href="#算法逻辑-3" class="heading-link"><i class="fas fa-link"></i></a>算法逻辑:</h3>
+      
+<p><img src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/mdfal1.png">
+代表性方面:拉近最不相似的样本 多样性方面:推远离预测最相似的样本 <img src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/emfal3.png"></p>
+
+        <h3 id="实现细节-1">
+          <a href="#实现细节-1" class="heading-link"><i class="fas fa-link"></i></a>实现细节:</h3>
+      
+
+        <h3 id="示意图-1">
+          <a href="#示意图-1" class="heading-link"><i class="fas fa-link"></i></a>示意图:</h3>
+      
+<p><img src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/emfshow1.png">
+<img src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/emfshow2.png"></p>
+
+        <h3 id="缺点-或-不足">
+          <a href="#缺点-或-不足" class="heading-link"><i class="fas fa-link"></i></a>缺点 或 不足:</h3>
+      
+<p>作者说本文方法主要针对于分类任务，可以考虑别的作用。</p>
+<p>其中两个指标是作者提出来的，相当于人工经验限制解空间，可以从这方面考虑。
+且其生成数据的方式相当于使用一个学习数据分布的模型去端到端的学习，可以从这方面改进。</p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://www.RaZzzyz.github.io">RaZz</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://www.razzzyz.github.io/2024/05/03/DataDistillation/">http://www.razzzyz.github.io/2024/05/03/DataDistillation/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://www.razzzyz.github.io/tags/data-distillation/">data distillation</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://www.razzzyz.github.io/tags/gradient/">gradient</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://www.razzzyz.github.io/tags/gan/">gan</a></span></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/2024/04/29/mpich/"><span class="paginator-prev__text">mpich</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="gitalk-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#dataset-distillation"><span class="toc-number">1.</span> <span class="toc-text">
+          DATASET DISTILLATION</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#publication-2018-arxiv"><span class="toc-number">1.1.</span> <span class="toc-text">
+          publication: 2018 arxiv</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E9%80%BB%E8%BE%91"><span class="toc-number">1.2.</span> <span class="toc-text">
+          算法逻辑:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E7%BB%86%E8%8A%82"><span class="toc-number">1.3.</span> <span class="toc-text">
+          实现细节:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dataset-condensation-with-gradient-matching"><span class="toc-number">2.</span> <span class="toc-text">
+          DATASET
+CONDENSATION WITH GRADIENT MATCHING</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#publication-iclr-2021"><span class="toc-number">2.1.</span> <span class="toc-text">
+          publication: ICLR 2021</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#githubhttpsgithub.comvico-uoedatasetcondensation"><span class="toc-number">2.2.</span> <span class="toc-text">
+          github:https:&#x2F;&#x2F;github.com&#x2F;VICO-UoE&#x2F;DatasetCondensation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%83%B3%E6%B3%95"><span class="toc-number">2.3.</span> <span class="toc-text">
+          想法:</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%A0%E7%BB%9F%E6%96%B9%E6%B3%95"><span class="toc-number">2.3.1.</span> <span class="toc-text">
+          传统方法:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E9%80%BB%E8%BE%91-1"><span class="toc-number">2.4.</span> <span class="toc-text">
+          算法逻辑:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E6%84%8F%E5%9B%BE"><span class="toc-number">2.5.</span> <span class="toc-text">
+          示意图:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9-%E6%88%96-%E9%97%AE%E9%A2%98"><span class="toc-number">2.6.</span> <span class="toc-text">
+          缺点 或 问题:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dataset-condensation-with-differentiable-siamese-augmentation"><span class="toc-number">3.</span> <span class="toc-text">
+          Dataset
+Condensation with Differentiable Siamese Augmentation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#publication-iclr-2021-%E4%B8%8Edc%E6%98%AF%E7%9B%B8%E5%90%8C%E4%BD%9C%E8%80%85"><span class="toc-number">3.1.</span> <span class="toc-text">
+          publication: ICLR 2021
+，与DC是相同作者</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#githubhttpsgithub.comvico-uoedatasetcondensation-1"><span class="toc-number">3.2.</span> <span class="toc-text">
+          github:https:&#x2F;&#x2F;github.com&#x2F;VICO-UoE&#x2F;DatasetCondensation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%83%B3%E6%B3%95-1"><span class="toc-number">3.3.</span> <span class="toc-text">
+          想法:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E9%80%BB%E8%BE%91-2"><span class="toc-number">3.4.</span> <span class="toc-text">
+          算法逻辑:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9-%E6%88%96-%E9%97%AE%E9%A2%98-1"><span class="toc-number">3.5.</span> <span class="toc-text">
+          缺点 或 问题:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dataset-condensation-via-efficient-synthetic-data-parameterization"><span class="toc-number">4.</span> <span class="toc-text">
+          Dataset
+Condensation via Efficient Synthetic-Data Parameterization</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#publication-iclr-2022"><span class="toc-number">4.1.</span> <span class="toc-text">
+          publication: ICLR 2022</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#githubhttpsgithub.comsnu-mllabefficient-dataset-condensation"><span class="toc-number">4.2.</span> <span class="toc-text">
+          github:https:&#x2F;&#x2F;github.com&#x2F;snu-mllab&#x2F;Efficient-Dataset-Condensation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%83%B3%E6%B3%95-2"><span class="toc-number">4.3.</span> <span class="toc-text">
+          想法:</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#dc-dsa"><span class="toc-number">4.3.1.</span> <span class="toc-text">
+          DC &amp; DSA:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9-%E6%88%96-%E9%97%AE%E9%A2%98-2"><span class="toc-number">4.4.</span> <span class="toc-text">
+          缺点 或 问题:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#efficient-dataset-distillation-via-minimax-diffusion"><span class="toc-number">5.</span> <span class="toc-text">
+          Efficient
+Dataset Distillation via Minimax Diffusion</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#publication-cvpr-2024"><span class="toc-number">5.1.</span> <span class="toc-text">
+          publication: CVPR 2024</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#githubhttpsgithub.comvimar-guminimaxdiffusion"><span class="toc-number">5.2.</span> <span class="toc-text">
+          github:https:&#x2F;&#x2F;github.com&#x2F;vimar-gu&#x2F;MinimaxDiffusion</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%83%B3%E6%B3%95-3"><span class="toc-number">5.3.</span> <span class="toc-text">
+          想法:</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%A0%E7%BB%9F%E6%A0%B7%E6%9C%AC%E8%BF%AD%E4%BB%A3%E6%96%B9%E6%B3%95"><span class="toc-number">5.3.1.</span> <span class="toc-text">
+          传统样本迭代方法:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E9%80%BB%E8%BE%91-3"><span class="toc-number">5.4.</span> <span class="toc-text">
+          算法逻辑:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E7%BB%86%E8%8A%82-1"><span class="toc-number">5.5.</span> <span class="toc-text">
+          实现细节:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E6%84%8F%E5%9B%BE-1"><span class="toc-number">5.6.</span> <span class="toc-text">
+          示意图:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9-%E6%88%96-%E4%B8%8D%E8%B6%B3"><span class="toc-number">5.7.</span> <span class="toc-text">
+          缺点 或 不足:</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/b236af3a7d814ed82f827ece2627a88b6dc70066540c1a3b5.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">The good things are not dead.</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/RaZzzyz" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="913510915" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">6</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">5</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">6</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2024</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>RaZz</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/js-md5@latest/src/md5.min.js"></script><script>function loadGitalk () {
+  if (!document.getElementById('gitalk-container')) {
+    return;
+  }
+
+  var gitalk = new Gitalk({
+    id: md5(window.location.pathname.slice(1)),
+    clientID: 'f1f3077ae07dad3ad8a1',
+    clientSecret: '739080083e11b7c9f38107673c8efa298850d751',
+    repo: 'RaZzzyz.github.io',
+    owner: 'RaZzzyz',
+    admin: ['RaZzzyz'],
+    distractionFreeMode: 'true',
+    language: 'zh-CN'
+  });
+  gitalk.render('gitalk-container');
+}
+
+if (false) {
+  loadGitalk();
+} else {
+  window.addEventListener('DOMContentLoaded', loadGitalk, false);
+}</script><script src="/js/utils.js?v=2.8.0"></script><script src="/js/stun-boot.js?v=2.8.0"></script><script src="/js/scroll.js?v=2.8.0"></script><script src="/js/header.js?v=2.8.0"></script><script src="/js/sidebar.js?v=2.8.0"></script></body></html>
