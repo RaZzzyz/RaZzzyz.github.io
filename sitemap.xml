@@ -4,7 +4,7 @@
   <url>
     <loc>http://www.razzzyz.github.io/2024/05/03/DataDistillation/</loc>
     
-    <lastmod>2024-05-03</lastmod>
+    <lastmod>2024-05-12</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -76,7 +76,7 @@
 
   <url>
     <loc>http://www.razzzyz.github.io/</loc>
-    <lastmod>2024-05-03</lastmod>
+    <lastmod>2024-05-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -84,42 +84,42 @@
   
   <url>
     <loc>http://www.razzzyz.github.io/tags/data-distillation/</loc>
-    <lastmod>2024-05-03</lastmod>
+    <lastmod>2024-05-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://www.razzzyz.github.io/tags/gradient/</loc>
-    <lastmod>2024-05-03</lastmod>
+    <lastmod>2024-05-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://www.razzzyz.github.io/tags/gan/</loc>
-    <lastmod>2024-05-03</lastmod>
+    <lastmod>2024-05-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://www.razzzyz.github.io/tags/sort/</loc>
-    <lastmod>2024-05-03</lastmod>
+    <lastmod>2024-05-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://www.razzzyz.github.io/tags/method/</loc>
-    <lastmod>2024-05-03</lastmod>
+    <lastmod>2024-05-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://www.razzzyz.github.io/tags/word-embedding/</loc>
-    <lastmod>2024-05-03</lastmod>
+    <lastmod>2024-05-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -128,35 +128,35 @@
   
   <url>
     <loc>http://www.razzzyz.github.io/categories/CV/</loc>
-    <lastmod>2024-05-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.razzzyz.github.io/categories/Recommendation/</loc>
-    <lastmod>2024-05-03</lastmod>
+    <lastmod>2024-05-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://www.razzzyz.github.io/categories/CV/distillaltion/</loc>
-    <lastmod>2024-05-03</lastmod>
+    <lastmod>2024-05-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.razzzyz.github.io/categories/Recommendation/</loc>
+    <lastmod>2024-05-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://www.razzzyz.github.io/categories/Parallel-Computing/</loc>
-    <lastmod>2024-05-03</lastmod>
+    <lastmod>2024-05-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://www.razzzyz.github.io/categories/NLP/</loc>
-    <lastmod>2024-05-03</lastmod>
+    <lastmod>2024-05-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
