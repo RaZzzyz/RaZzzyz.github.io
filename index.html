@@ -89,6 +89,18 @@
   .pub-item .pub-links{font-size:12.5px}
   .pub-item .pub-links a{color:var(--accent);text-decoration:none;margin-right:14px;border-bottom:1px dashed rgba(179,84,58,.4)}
   .pub-item .pub-links a:hover{border-bottom-style:solid}
+  /* Git 仓库 */
+  .repo-item{display:flex;align-items:center;gap:18px;margin-bottom:14px;padding:18px 22px;background:var(--bg);border:1px solid var(--line);border-radius:12px;transition:.2s}
+  .repo-item:hover{border-color:var(--accent);box-shadow:0 6px 20px rgba(0,0,0,.06)}
+  .repo-item .repo-ic{width:44px;height:44px;flex-shrink:0;border-radius:12px;background:linear-gradient(135deg,#24292e,#444c56);display:flex;align-items:center;justify-content:center;font-size:20px;color:#fff}
+  .repo-item .repo-info{flex:1;min-width:0}
+  .repo-item .repo-info .repo-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:5px}
+  .repo-item .repo-info .repo-name{font-size:15.5px;font-weight:600}
+  .repo-item .repo-info .repo-lang{font-size:11px;color:var(--muted);background:var(--card);border:1px solid var(--line);padding:2px 10px;border-radius:14px}
+  .repo-item .repo-info .repo-star{font-size:12px;color:#a1892f;background:#faf6e8;padding:2px 10px;border-radius:14px}
+  .repo-item .repo-info .repo-desc{font-size:13px;color:var(--muted);line-height:1.6}
+  .repo-item .repo-link{flex-shrink:0;font-size:12.5px;color:var(--accent);text-decoration:none;border:1px solid rgba(179,84,58,.4);padding:7px 18px;border-radius:20px;transition:.2s}
+  .repo-item .repo-link:hover{background:var(--accent);color:#fff}
   /* 空状态 */
   .empty-card{border:2px dashed var(--line);border-radius:14px;padding:64px 30px;text-align:center}
   .empty-card .e-ic{font-size:36px;opacity:.35;margin-bottom:12px}
@@ -234,12 +246,31 @@
     </section>
 
     <section id="repos" class="section-block">
-      <div class="section-heading"><span class="num">04</span><h3>Git Repo</h3><span class="cnt">0 个</span></div>
+      <div class="section-heading"><span class="num">04</span><h3>Git Repo</h3><span class="cnt">2 个</span></div>
       
-      <div class="empty-card">
-        <div class="e-ic">&#128187;</div>
-        <div class="e-t">暂无仓库</div>
-        <div class="e-s">以后在这里展示 GitHub 项目,敬请期待</div>
+      <div class="repo-item">
+        <div class="repo-ic">&#xf09b;</div>
+        <div class="repo-info">
+          <div class="repo-top">
+            <span class="repo-name">LeanRAG</span>
+            <span class="repo-lang">Python</span>
+            <span class="repo-star">&#9733; 257</span>
+          </div>
+          <div class="repo-desc">(AAAI 2026) Knowledge-Graph-Based Generation with Semantic Aggregation and Hierarchical Retrieval</div>
+        </div>
+        <a class="repo-link" href="https://github.com/KnowledgeXLab/LeanRAG" target="_blank">GitHub</a>
+      </div>
+      <div class="repo-item">
+        <div class="repo-ic">&#xf09b;</div>
+        <div class="repo-info">
+          <div class="repo-top">
+            <span class="repo-name">Heta_Framework</span>
+            <span class="repo-lang">Python</span>
+            <span class="repo-star">&#9733; 3</span>
+          </div>
+          <div class="repo-desc">Composable knowledge-base framework for building, searching, and evaluating RAG systems from recipes.</div>
+        </div>
+        <a class="repo-link" href="https://github.com/KnowledgeXLab/Heta_Framework" target="_blank">GitHub</a>
       </div>
     </section>
 
