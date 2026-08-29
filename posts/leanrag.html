@@ -115,7 +115,7 @@
   <a class="back" href="/">← 返回首页</a>
   <h1>LeanRAG:更省上下文的图 RAG</h1>
   <div class="meta">2026-06-02 · 机器学习 · <a href="#">#RAG</a> · <a href="#">#知识图谱</a> · <a href="#">#LLM</a> · <a href="#">#AAAI</a></div>
-  <div class="content"><h1 id="leanrag-rag">LeanRAG:更省上下文的图 RAG</h1>
+  <div class="content"><h1 id="leanrag-ragaaai-26">LeanRAG:更省上下文的图 RAG(AAAI' 26)</h1>
 <p>今天分享一篇 RAG 方向的新论文:<strong>LeanRAG: Knowledge-Graph-Based Generation with Semantic Aggregation and Hierarchical Retrieval</strong>。</p>
 <p>它关注的问题很直接:KG-based RAG 虽然更结构化,但检索时经常又贵又冗余,尤其是复杂问答里,图建好了却没真正"用起来"。以前的 GraphRAG / HiRAG 类方法,核心思路是把文档组织成知识图谱或层级摘要。但问题在于:高层摘要节点之间常常像一个个"语义孤岛",检索阶段又容易退化成 flat search,最后塞给 LLM 一堆看似相关、实际很吵的上下文。</p>
 <h2 id="_1">核心思路:让图真的可导航</h2>
@@ -131,8 +131,8 @@
 <p>但实验主要依赖 LLM-as-judge,且主实验使用商业 API,真实系统里的成本、延迟、图构建稳定性还需要更多验证。尤其是 LLM 生成高层关系这一步,如果知识库规模很大,维护成本可能不低。</p>
 <h2 id="_5">参考</h2>
 <ul>
-<li>论文:arXiv:2508.10391</li>
-<li>代码:github.com/KnowledgeXLab/LeanRAG</li>
+<li>论文:https://arxiv.org/abs/2508.10391</li>
+<li>代码:https://github.com/KnowledgeXLab/LeanRAG</li>
 </ul></div>
   <div class="foot">本文由 RaZz 发布 · Struggle for Better · <a href="/" style="color:#b3543a">返回首页</a></div>
 </div>
