@@ -28,9 +28,11 @@
   .profile-org{font-size:12px;color:rgba(255,255,255,.55);margin-top:3px}
   .profile-role, .profile-org{font-weight:300}
   .profile-sig{font-size:12.5px;font-style:italic;color:rgba(255,255,255,.6);margin-top:12px;padding:10px 0;border-top:1px solid rgba(255,255,255,.18);border-bottom:1px solid rgba(255,255,255,.18)}
-  .social-links{display:flex;justify-content:center;gap:10px;margin-top:18px}
-  .social-links a{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.28);display:flex;align-items:center;justify-content:center;font-size:15px;text-decoration:none;transition:.2s}
-  .social-links a:hover{background:#fff;color:#1a1a2e}
+  .social-links{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px;max-width:216px;margin-left:auto;margin-right:auto}
+  .social-links a{width:46px;height:46px;margin:0 auto;border-radius:50%;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.28);display:flex;align-items:center;justify-content:center;font-size:19px;text-decoration:none;transition:.2s}
+  .social-links a i{color:#fff}
+  .social-links a:hover{background:#fff;transform:translateY(-2px)}
+  .social-links a:hover i{color:#1a1a2e}
   .profile-meta{margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.15);font-size:12px;color:rgba(255,255,255,.7)}
   .profile-meta p,.profile-meta a{margin:5px 0;display:block;text-decoration:none;color:rgba(255,255,255,.7)}
   .profile-meta a:hover{color:#fff}

@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RaZz 的主页</title>
+<link rel="stylesheet" href="fontawesome/css/all.min.css">
 <style>
   :root{
     --bg:#f6f4ef; --card:#ffffff; --ink:#23201c; --muted:#8a857d;
@@ -28,9 +29,11 @@
   .profile-org{font-size:12px;color:rgba(255,255,255,.55);margin-top:3px}
   .profile-role, .profile-org{font-weight:300}
   .profile-sig{font-size:12.5px;font-style:italic;color:rgba(255,255,255,.6);margin-top:12px;padding:10px 0;border-top:1px solid rgba(255,255,255,.18);border-bottom:1px solid rgba(255,255,255,.18)}
-  .social-links{display:flex;justify-content:center;gap:10px;margin-top:18px}
-  .social-links a{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.28);display:flex;align-items:center;justify-content:center;font-size:15px;text-decoration:none;transition:.2s}
-  .social-links a:hover{background:#fff;color:#1a1a2e}
+  .social-links{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px;max-width:216px;margin-left:auto;margin-right:auto}
+  .social-links a{width:46px;height:46px;margin:0 auto;border-radius:50%;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.28);display:flex;align-items:center;justify-content:center;font-size:19px;text-decoration:none;transition:.2s}
+  .social-links a i{color:#fff}
+  .social-links a:hover{background:#fff;transform:translateY(-2px)}
+  .social-links a:hover i{color:#1a1a2e}
   .profile-meta{margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.15);font-size:12px;color:rgba(255,255,255,.7)}
   .profile-meta p,.profile-meta a{margin:5px 0;display:block;text-decoration:none;color:rgba(255,255,255,.7)}
   .profile-meta a:hover{color:#fff}
@@ -154,7 +157,7 @@
       
       <div class="profile-sig">Struggle for Better</div>
       <nav class="social-links">
-        <a href="https://scholar.google.com/citations?hl=zh-CN&amp;user=2C-fQ2kAAAAJ" title="Google Scholar">🎓</a><a href="https://github.com/RaZzzyz" title="GitHub">🐙</a><a href="https://dblp.org/pid/386/1467.html" title="DBLP">📚</a><a href="https://orcid.org/0009-0009-1773-7002" title="ORCID">🆔</a><a href="mailto:razzzhang@gmail.com" title="邮箱">✉️</a><a href="https://wpa.qq.com/msgrd?v=3&amp;uin=913510915&amp;site=qq&amp;menu=yes" title="QQ">💬</a>
+        <a href="https://scholar.google.com/citations?hl=zh-CN&amp;user=2C-fQ2kAAAAJ" title="Google Scholar"><i class="fa-solid fa-graduation-cap"></i></a><a href="https://github.com/RaZzzyz" title="GitHub"><i class="fa-brands fa-github"></i></a><a href="https://dblp.org/pid/386/1467.html" title="DBLP"><i class="fa-solid fa-book-open"></i></a><a href="https://orcid.org/0009-0009-1773-7002" title="ORCID"><i class="fa-brands fa-orcid"></i></a><a href="mailto:razzzhang@gmail.com" title="邮箱"><i class="fa-solid fa-envelope"></i></a><a href="https://wpa.qq.com/msgrd?v=3&amp;uin=913510915&amp;site=qq&amp;menu=yes" title="QQ"><i class="fa-brands fa-qq"></i></a>
       </nav>
       <div class="profile-meta"><p class="profile-loc">&#128205; 上海, 中国</p><a class="profile-home" href="https://razzzyz.github.io/" target="_blank">&#127968; 主页</a></div>
     </div>
@@ -172,9 +175,7 @@
         <div class="hero-focus-grid">
           <div class="hero-focus-item"><div class="f-ic">🧠</div><strong>机器学习</strong><small>知识蒸馏 </small></div><div class="hero-focus-item"><div class="f-ic">🔍</div><strong>知识图谱</strong><small>表示学习 · 图算法 · TransE</small></div><div class="hero-focus-item"><div class="f-ic">⚡</div><strong>自然语言处理</strong><small>RAG</small></div>
         </div>
-        <div class="hero-actions">
-          <a class="primary" href="#articles">阅读文章</a><a class="ghost" href="https://github.com/RaZzzyz">GitHub</a><a class="ghost" href="#">QQ</a>
-        </div>
+        
       </section>
 
     <section id="articles" class="section-block">
