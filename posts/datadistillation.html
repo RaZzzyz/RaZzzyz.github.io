@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DataDistillation 数据集蒸馏 — RaZz 的博客</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:Georgia,"Songti SC","SimSun",-apple-system,"PingFang SC","Microsoft YaHei",serif;background:#faf8f5;color:#2b2b2b}
+  .hero{background:url('img/stars.jpg') center/cover;padding:64px 20px 56px;text-align:center;color:#fff;position:relative}
+  .hero::after{content:'';position:absolute;inset:0;background:rgba(10,10,30,.55)}
+  .hero>*{position:relative;z-index:1}
+  .avatar{width:96px;height:96px;border-radius:50%;border:4px solid rgba(255,255,255,.8);object-fit:cover;margin-bottom:16px}
+  .hero h1{font-size:42px;letter-spacing:6px;font-weight:700;margin-bottom:8px}
+  .hero .sig{font-size:15px;font-style:italic;opacity:.9;letter-spacing:2px}
+  .hero .social{margin-top:18px}
+  .hero .social a{display:inline-block;color:#fff;text-decoration:none;margin:0 10px;font-size:14px;border:1px solid rgba(255,255,255,.5);padding:6px 18px;border-radius:30px;transition:.2s}
+  .hero .social a:hover{background:#fff;color:#222}
+  nav.tabs{position:sticky;top:0;z-index:50;background:rgba(250,248,245,.94);backdrop-filter:blur(12px);border-bottom:1px solid #e5e0d8;display:flex;justify-content:center;gap:8px;padding:0 16px}
+  nav.tabs a{text-decoration:none;color:#777;font-size:14px;letter-spacing:3px;padding:16px 22px;border-bottom:3px solid transparent;transition:.18s;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+  nav.tabs a:hover{color:#2b2b2b}
+  nav.tabs a.on{color:#2b2b2b;border-bottom-color:#b3543a;font-weight:600}
+  .wrap{max-width:1100px;margin:0 auto;padding:44px 20px}
+  .pane{display:none}
+  .pane.on{display:block}
+  .section-title{font-size:22px;letter-spacing:4px;margin-bottom:8px;display:flex;align-items:center;gap:14px;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+  .section-title::after{content:'';flex:1;height:1px;background:#ddd}
+  .section-sub{color:#999;font-size:13px;margin-bottom:26px;letter-spacing:1px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+  .card{background:#fff;border:1px solid #eee;border-radius:4px;overflow:hidden;transition:.25s;cursor:pointer;display:block;text-decoration:none;color:inherit}
+  .card:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(0,0,0,.1)}
+  .card .cover{height:130px;position:relative}
+  .card .cover .no{position:absolute;top:14px;left:18px;color:#fff;font-size:13px;letter-spacing:2px;opacity:.85}
+  .card .cover .date{position:absolute;bottom:12px;right:16px;color:#fff;font-size:12px;opacity:.85}
+  .card .body{padding:20px}
+  .card .cat{font-size:11px;color:#b3543a;letter-spacing:2px;text-transform:uppercase;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+  .card h2{font-size:19px;margin:8px 0 10px;line-height:1.4}
+  .card p{font-size:13.5px;color:#777;line-height:1.7}
+  .card .more{display:inline-block;margin-top:14px;font-size:12.5px;color:#2b2b2b;border-bottom:1px solid #999;padding-bottom:2px}
+  .count{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:12px;color:#b0a898;background:#f1ede6;padding:3px 12px;border-radius:20px;margin-left:12px;letter-spacing:0}
+  /* 文章正文页 */
+  .article{max-width:820px;margin:0 auto;padding:44px 22px 70px}
+  .article .back{display:inline-block;color:#999;text-decoration:none;font-size:13px;margin-bottom:26px;letter-spacing:1px}
+  .article .back:hover{color:#b3543a}
+  .article h1{font-size:34px;line-height:1.3;letter-spacing:1px;margin-bottom:12px}
+  .article .meta{color:#999;font-size:13px;margin-bottom:30px;padding-bottom:20px;border-bottom:2px solid #eee}
+  .article .meta a{color:#b3543a;text-decoration:none}
+  .article .content{font-size:16.5px;line-height:2;color:#3a3a3a}
+  .article .content h2{font-size:24px;margin:36px 0 14px;padding-left:12px;border-left:4px solid #b3543a}
+  .article .content h3{font-size:19px;margin:26px 0 10px}
+  .article .content p{margin:14px 0}
+  .article .content ul,.article .content ol{margin:14px 0 14px 26px}
+  .article .content li{margin:6px 0}
+  .article .content a{color:#8a5a1e;text-decoration:underline}
+  .article .content img{max-width:100%;border-radius:6px;margin:10px 0}
+  .article .content blockquote{border-left:4px solid #ddd;color:#777;padding:4px 18px;margin:16px 0;background:#faf7f1}
+  .article .content code{background:#f2ede4;padding:2px 7px;border-radius:4px;font-size:14px;font-family:ui-monospace,Consolas,monospace}
+  .article .content pre{background:#2b2b2b;color:#e8e8e8;padding:18px 20px;border-radius:8px;overflow-x:auto;margin:18px 0;font-size:14px;line-height:1.7}
+  .article .content pre code{background:none;color:inherit;padding:0}
+  .article .content table{border-collapse:collapse;margin:16px 0;width:100%}
+  .article .content th,.article .content td{border:1px solid #e0dcd4;padding:8px 14px;font-size:14.5px}
+  .article .content th{background:#f4efe6}
+  .article .foot{margin-top:44px;padding-top:18px;border-top:1px solid #eee;font-size:12.5px;color:#aaa}
+  .empty{color:#bbb;font-size:15px;padding:40px;text-align:center;letter-spacing:2px}
+  @media(max-width:640px){nav.tabs a{padding:14px 10px;font-size:13px;letter-spacing:1px}.article h1{font-size:26px}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <img class="avatar" src="img/b236af3a7d814ed82f827ece2627a88b6dc70066540c1a3b5.jpg" alt="avatar">
+  <h1>RaZz</h1>
+  <div class="sig">Struggle for Better</div>
+  <div class="social">
+    <a href="https://github.com/RaZzzyz">GitHub</a>
+    <a href="#">QQ</a>
+    <a href="/posts/">全部文章</a>
+  </div>
+</div>
+
+<div class="article">
+  <a class="back" href="/">← 返回首页</a>
+  <h1>DataDistillation 数据集蒸馏</h1>
+  <div class="meta">2024-05-03 · 机器学习</div>
+  <div class="content"><h2 id="dataset-distillation">DATASET DISTILLATION</h2>
+<h3 id="publication-2018-arxiv">publication: 2018 arxiv</h3>
+<p>Facebook AI Research ### github：https://github.com/ssnl/dataset-distillation ### 想法: #### 传统方法 传统对于数据集缩小的方法，都是挑选数据集中存在的数据作为子集。其是启发性的搜索，并且在数据集中无明显代表性的数据时理论上就是不合理的 #### 提出的方法 以优化神经网络参数的方式，来优化数据集。在代码实现中表现为，先用高斯分布生成指定数量的,然后通过梯度反向传播的方式来优化迭代，得到distillation dataset.</p>
+<h3 id="_1">算法逻辑:</h3>
+<p><img alt="" src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/ddal1.png" /></p>
+<h3 id="_2">实现细节:</h3>
+<p><img alt="" src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/ddimpl.png" /> 可以看到，其对于蒸馏的数据生成是采用了高斯分布进行初始化的随机数据。 ### 示意图: <img alt="" src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/ddshow1.png" /><br />
+- Random real images: We randomly sample the same number of real images per category.<br />
+- Optimized real images: We sample different sets of random real images as above, and choose the top 20% best performing sets.<br />
+- k-means: We apply k-means clustering to each category, and use the cluster centroids as training images.<br />
+- Average real images: We compute the average image for each category, which is reused in different GD steps. <img alt="" src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/ddshow2.png" /> ### 缺点 或 问题: 作者在文中提到DD对于参数的初始化很敏感，对于进行的蒸馏数据集，可能只适用于，在文中的解决办法也只是应用了多个初始化。</p>
+<h2 id="dataset-condensation-with-gradient-matching">DATASET CONDENSATION WITH GRADIENT MATCHING</h2>
+<h3 id="publication-iclr-2021">publication: ICLR 2021</h3>
+<h3 id="githubhttpsgithubcomvico-uoedatasetcondensation">github:https://github.com/VICO-UoE/DatasetCondensation</h3>
+<h3 id="_3">想法:</h3>
+<h4 id="_4">传统方法:</h4>
+<p>启发式方法选择数据集的子集。 #### 提出方法： 与DD相同，获得一个人工数据集，使模型可以通过其来获得较高的泛化性。</p>
+<p>但DD存在一些他提出的问题。他定义了两个数据集，原始的为T，人造的为S，他说直接用神经网络的参数在T和S上对齐可能是不可能实现的，于是他基于此提出了自己的方法。</p>
+<p>他的思想是对比两个数据集上的梯度，优化目标是使得两个数据集的梯度尽可能相似。也即提出了一种数据集的度量指标即数学特征：模型在数据集上的梯度。</p>
+<h3 id="_5">算法逻辑:</h3>
+<p><img alt="" src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/dcal1.png" /> 其中是一种有限步优化的方法，不是论文的重点。 ### 实现细节: <img alt="" src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/dcal2.png" /> 可以看出，他是从真实图像中随机取了ipc张，然后进行优化的</p>
+<h3 id="_6">示意图:</h3>
+<p><img alt="" src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/dcshow1.png" /> <img alt="" src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/dcshow2.png" /></p>
+<h3 id="_7">缺点 或 问题:</h3>
+<p>论文在刚开始时提出了模型在S和T上的参数是不同的，又基于这两个数据集的参数可能很难对齐，然后提出了使用梯度进行比较数据集距离的方法，然后在后续的证明中又说在实验中发现D(S,T)close to zero,然后将其优化为一个参数???</p>
+<p>像是先射箭再画靶；直接使用S,T进行优化理论上比较困难且存在一定问题-&gt;我们希望他们的距离尽可能小并且遵循相似的路径-&gt;于是我们采用了梯度,(并且我们发现他们的D就是小，于是我们用其中一个替代了参数).</p>
+<p>没有在较大的数据集上进行测试</p>
+<h2 id="dataset-condensation-with-differentiable-siamese-augmentation">Dataset Condensation with Differentiable Siamese Augmentation</h2>
+<h3 id="publication-iclr-2021-dc">publication: ICLR 2021 ，与DC是相同作者</h3>
+<h3 id="githubhttpsgithubcomvico-uoedatasetcondensation_1">github:https://github.com/VICO-UoE/DatasetCondensation</h3>
+<h3 id="_8">想法:</h3>
+<p>现有的方法在合成数据集与完整数据集上的效果仍有很大差距；受启发于数据增强的效果，作者将数据增强融入到数据集构造中。</p>
+<h3 id="_9">算法逻辑:</h3>
+<p><img alt="" src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/dsaal1.png" /> 与DC不同，在DSA中，参数与图像的更新均用SGD代替opt-algs,在实现中，DC和DSA的代码都用的sgd作为优化器。 ### 实现细节: - 为了保证学习到图像增强后原本图像中存在的信息，选择对T和S进行相同的增强 ### 示意图: <img alt="" src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/dsashow1.png" /> <img alt="" src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/dsashow2.png" /></p>
+<h3 id="_10">缺点 或 问题:</h3>
+<p>404</p>
+<h2 id="dataset-condensation-via-efficient-synthetic-data-parameterization">Dataset Condensation via Efficient Synthetic-Data Parameterization</h2>
+<h3 id="publication-iclr-2022">publication: ICLR 2022</h3>
+<h3 id="githubhttpsgithubcomsnu-mllabefficient-dataset-condensation">github:https://github.com/snu-mllab/Efficient-Dataset-Condensation</h3>
+<h3 id="_11">想法:</h3>
+<h4 id="dc-dsa">DC &amp; DSA:</h4>
+<p>通过反向传播优化图像相当于对图像的每个像素进行优化，没有对合成图像引入规律性条件(个人理解为专家知识).也即没有更强的约束条件，存在解!=一定能找到解。就像全连接与卷积网络一样。 #### 本文方法: DC提出的梯度范数是有问题的，本文优化了优化并提出了新方法。</p>
+<p>终极目标是 通过模型在S上的训练，提高在测试集上的表现，但这个目标太难实现，大家都采用中间目标来进行优化。DD是通过参数的改变，优化在T上的表现。而DC和DSA则是通过参数的梯度。 <img alt="" src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/idcil.png" /> 基于一种观测:随着S中每类图像数量的增加，match loss降低，也即IPC越高，在S上的表现越好，于是作者提出了一种Multi-scaleformation的映射函数，不改变S的大小，而降S映射到另一个空间，用来与目标D进行优化，再反向传播到S中。相较于数据增强，引入了另一种改变图像的方法。 ### 算法逻辑： <img alt="" src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/idcal1.png" /> 为什么相较于DSA,使用了T来更新参数,因为作者观察到 <img alt="" src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/idcal2.png" /> S与强耦合，若用S来更新，其L1范数会很快收敛，所以采用了T。 ### 实现细节: 采用了高斯分布随机生成数据，而没用DC和DSA的从数据集中随机采集的方法。值得商榷 <img alt="" src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/dsashow3.png" /> DSA有特征图，说采用原始图像会保留物体的姿态和颜色，但IDC可能不想被原始图像干扰？ ### 示意图: <img alt="" src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/idcshow2.png" /> <img alt="" src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/idcshow1.png" /></p>
+<h3 id="_12">缺点 或 问题:</h3>
+<p>为什么不直接提高S或者在S中引入函数，也即从根本上使用f对S进行改变，而是通过f将S映射到新空间。是因为优化可能引入递归？</p>
+<h2 id="efficient-dataset-distillation-via-minimax-diffusion">Efficient Dataset Distillation via Minimax Diffusion</h2>
+<h3 id="publication-cvpr-2024">publication: CVPR 2024</h3>
+<h3 id="githubhttpsgithubcomvimar-guminimaxdiffusion">github:https://github.com/vimar-gu/MinimaxDiffusion</h3>
+<h3 id="_13">想法:</h3>
+<h4 id="_14">传统样本迭代方法:</h4>
+<p>DC,DSA,IDC其优化空间与分辨率，图像数量呈正相关，为了更好的效果，必不可少的有更大的计算资源。 <img alt="" src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/mdfal.png" /> #### 本文方法: 使用生成扩散技术，以及观察结果，基于数据集的 representativeness 和diversity生成样本S。</p>
+<p>也即使用diffusion，并且通过人工经验定义了两个优化目标，来得到一个数据集S。表现好并且相较于传统样本迭代方法，生成数据近似O(1).</p>
+<h3 id="_15">算法逻辑:</h3>
+<p><img alt="" src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/mdfal1.png" /> 代表性方面:拉近最不相似的样本 多样性方面:推远离预测最相似的样本 <img alt="" src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/emfal3.png" /></p>
+<h3 id="_16">实现细节:</h3>
+<h3 id="_17">示意图:</h3>
+<p><img alt="" src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/emfshow1.png" /> <img alt="" src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/emfshow2.png" /></p>
+<h3 id="_18">缺点 或 不足:</h3>
+<p>作者说本文方法主要针对于分类任务，可以考虑别的作用。</p>
+<p>其中两个指标是作者提出来的，相当于人工经验限制解空间，可以从这方面考虑。 且其生成数据的方式相当于使用一个学习数据分布的模型去端到端的学习，可以从这方面改进。</p></div>
+  <div class="foot">本文由 RaZz 发布 · Struggle for Better · <a href="/" style="color:#b3543a">返回首页</a></div>
+</div>
+</body>
+</html>

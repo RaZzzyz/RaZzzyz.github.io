@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>word2vec 词向量 — RaZz 的博客</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:Georgia,"Songti SC","SimSun",-apple-system,"PingFang SC","Microsoft YaHei",serif;background:#faf8f5;color:#2b2b2b}
+  .hero{background:url('img/stars.jpg') center/cover;padding:64px 20px 56px;text-align:center;color:#fff;position:relative}
+  .hero::after{content:'';position:absolute;inset:0;background:rgba(10,10,30,.55)}
+  .hero>*{position:relative;z-index:1}
+  .avatar{width:96px;height:96px;border-radius:50%;border:4px solid rgba(255,255,255,.8);object-fit:cover;margin-bottom:16px}
+  .hero h1{font-size:42px;letter-spacing:6px;font-weight:700;margin-bottom:8px}
+  .hero .sig{font-size:15px;font-style:italic;opacity:.9;letter-spacing:2px}
+  .hero .social{margin-top:18px}
+  .hero .social a{display:inline-block;color:#fff;text-decoration:none;margin:0 10px;font-size:14px;border:1px solid rgba(255,255,255,.5);padding:6px 18px;border-radius:30px;transition:.2s}
+  .hero .social a:hover{background:#fff;color:#222}
+  nav.tabs{position:sticky;top:0;z-index:50;background:rgba(250,248,245,.94);backdrop-filter:blur(12px);border-bottom:1px solid #e5e0d8;display:flex;justify-content:center;gap:8px;padding:0 16px}
+  nav.tabs a{text-decoration:none;color:#777;font-size:14px;letter-spacing:3px;padding:16px 22px;border-bottom:3px solid transparent;transition:.18s;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+  nav.tabs a:hover{color:#2b2b2b}
+  nav.tabs a.on{color:#2b2b2b;border-bottom-color:#b3543a;font-weight:600}
+  .wrap{max-width:1100px;margin:0 auto;padding:44px 20px}
+  .pane{display:none}
+  .pane.on{display:block}
+  .section-title{font-size:22px;letter-spacing:4px;margin-bottom:8px;display:flex;align-items:center;gap:14px;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+  .section-title::after{content:'';flex:1;height:1px;background:#ddd}
+  .section-sub{color:#999;font-size:13px;margin-bottom:26px;letter-spacing:1px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+  .card{background:#fff;border:1px solid #eee;border-radius:4px;overflow:hidden;transition:.25s;cursor:pointer;display:block;text-decoration:none;color:inherit}
+  .card:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(0,0,0,.1)}
+  .card .cover{height:130px;position:relative}
+  .card .cover .no{position:absolute;top:14px;left:18px;color:#fff;font-size:13px;letter-spacing:2px;opacity:.85}
+  .card .cover .date{position:absolute;bottom:12px;right:16px;color:#fff;font-size:12px;opacity:.85}
+  .card .body{padding:20px}
+  .card .cat{font-size:11px;color:#b3543a;letter-spacing:2px;text-transform:uppercase;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+  .card h2{font-size:19px;margin:8px 0 10px;line-height:1.4}
+  .card p{font-size:13.5px;color:#777;line-height:1.7}
+  .card .more{display:inline-block;margin-top:14px;font-size:12.5px;color:#2b2b2b;border-bottom:1px solid #999;padding-bottom:2px}
+  .count{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:12px;color:#b0a898;background:#f1ede6;padding:3px 12px;border-radius:20px;margin-left:12px;letter-spacing:0}
+  /* 文章正文页 */
+  .article{max-width:820px;margin:0 auto;padding:44px 22px 70px}
+  .article .back{display:inline-block;color:#999;text-decoration:none;font-size:13px;margin-bottom:26px;letter-spacing:1px}
+  .article .back:hover{color:#b3543a}
+  .article h1{font-size:34px;line-height:1.3;letter-spacing:1px;margin-bottom:12px}
+  .article .meta{color:#999;font-size:13px;margin-bottom:30px;padding-bottom:20px;border-bottom:2px solid #eee}
+  .article .meta a{color:#b3543a;text-decoration:none}
+  .article .content{font-size:16.5px;line-height:2;color:#3a3a3a}
+  .article .content h2{font-size:24px;margin:36px 0 14px;padding-left:12px;border-left:4px solid #b3543a}
+  .article .content h3{font-size:19px;margin:26px 0 10px}
+  .article .content p{margin:14px 0}
+  .article .content ul,.article .content ol{margin:14px 0 14px 26px}
+  .article .content li{margin:6px 0}
+  .article .content a{color:#8a5a1e;text-decoration:underline}
+  .article .content img{max-width:100%;border-radius:6px;margin:10px 0}
+  .article .content blockquote{border-left:4px solid #ddd;color:#777;padding:4px 18px;margin:16px 0;background:#faf7f1}
+  .article .content code{background:#f2ede4;padding:2px 7px;border-radius:4px;font-size:14px;font-family:ui-monospace,Consolas,monospace}
+  .article .content pre{background:#2b2b2b;color:#e8e8e8;padding:18px 20px;border-radius:8px;overflow-x:auto;margin:18px 0;font-size:14px;line-height:1.7}
+  .article .content pre code{background:none;color:inherit;padding:0}
+  .article .content table{border-collapse:collapse;margin:16px 0;width:100%}
+  .article .content th,.article .content td{border:1px solid #e0dcd4;padding:8px 14px;font-size:14.5px}
+  .article .content th{background:#f4efe6}
+  .article .foot{margin-top:44px;padding-top:18px;border-top:1px solid #eee;font-size:12.5px;color:#aaa}
+  .empty{color:#bbb;font-size:15px;padding:40px;text-align:center;letter-spacing:2px}
+  @media(max-width:640px){nav.tabs a{padding:14px 10px;font-size:13px;letter-spacing:1px}.article h1{font-size:26px}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <img class="avatar" src="img/b236af3a7d814ed82f827ece2627a88b6dc70066540c1a3b5.jpg" alt="avatar">
+  <h1>RaZz</h1>
+  <div class="sig">Struggle for Better</div>
+  <div class="social">
+    <a href="https://github.com/RaZzzyz">GitHub</a>
+    <a href="#">QQ</a>
+    <a href="/posts/">全部文章</a>
+  </div>
+</div>
+
+<div class="article">
+  <a class="back" href="/">← 返回首页</a>
+  <h1>word2vec 词向量</h1>
+  <div class="meta">2024-04-19 · 机器学习</div>
+  <div class="content"><p>参考博客：</p>
+<div class="codehilite"><pre><span></span><code>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="1word2vec">1.什么是word2vec</h3>
+<p>2013年，Google团队发表了word2vec工具。word2vec工具主要包含两个模型：跳字模型（skip-gram）和连续词袋模型（continuous bag of words，简称CBOW），以及两种高效训练的方法：负采样（negative sampling）和层序softmax（hierarchical softmax）。值得一提的是，word2vec词向量可以较好地表达不同词之间的相似和类比关系。</p>
+<p>在自然语言处理中，词语是具有原子性的单位，而词语是符号形式的，如果想对其进行计算，我们就要将他们转换为数值形式，或者说——嵌入到一个数学空间里，这种嵌入方式，就叫词嵌入（word embedding)，而 Word2vec，就是词嵌入（ word embedding) 的一种.</p>
+<h3 id="2-language-model">2、语言模型 Language Model</h3>
+<p>统计语言模型给出了这一类问题的一个基本解决框架。对于一段文本序列S=w1,w2,…,wT，它的概率可以表示为：</p>
+<p>即将序列的联合概率转化为一系列条件概率的乘积。问题变成了如何去预测这些给定previous words下的条件概率p(wt|w_1,w_2,…,w_{t−1})。常见的统计语言模型有N元文法模型（N-gram Model）</p>
+<p>基于马尔科夫假设（Markov Assumption）：下一个词的出现仅依赖于它前面的一个或几个词。<br />
+ 假设下一个词的出现依赖它前面的一个词，则有：</p>
+<p>假设下一个词的出现依赖它前面的两个词，则有：</p>
+<p>那么，我们在面临实际问题时，如何选择依赖词的个数，即n。</p>
+<p>更大的n：对下一个词出现的约束信息更多，具有更大的辨别力；</p>
+<p>更小的n：在训练语料库中出现的次数更多，具有更可靠的统计信息，具有更高的可靠性。</p>
+<p>理论上，n越大越好，经验上，trigram用的最多，尽管如此，原则上，能用bigram解决，绝不使用trigram。</p>
+<h3 id="3nlp">3、NLP词的表示方法类型</h3>
+<h4 id="31one-hot">3.1、词的独热表示one-hot</h4>
+<p>用词向量来表示词并不是word2vec的首创，在很久之前就出现了。最早的词向量是很冗长的，它使用是词向量维度大小为整个词汇表的大小，对于每个具体的词汇表中的词，将对应的位置置为1。比如我们有5个词组成的词汇表，词"Queen"在词汇表中的序号为2， 那么它的词向量就是(0,1,0,0,0)。同样的道理，词"Woman"是序号3，词向量就是(0,0,1,0,0)。这种词向量的编码方式我们一般叫做one hot representation.</p>
+<p>One hot representation用来表示词向量非常简单，但是却有很多问题。<br />
+ 1、任意两个词之间都是孤立的，根本无法表示出在语义层面上词语词之间的相关信息，而这一点是致命的。<br />
+ 2、我们的词汇表一般都非常大，比如达到百万级别，这样每个词都用百万维的向量来表示简直是内存的灾难。能不能把词向量的维度变小呢？</p>
+<h4 id="32-distributed-representation">3.2、词的分布式表示 distributed representation</h4>
+<p>Dristributed representation可以解决One hot representation的问题，它的思路是通过训练，将每个词都映射到一个较短的词向量上来。所有的这些词向量就构成了向量空间，进而可以用普通的统计学的方法来研究词与词之间的关系。这个较短的词向量维度是多大呢？这个一般需要我们在训练时自己来指定。<br />
+ 词的分布式表示主要可以分为三类：基于矩阵的分布表示、基于聚类的分布表示和基于神经网络的分布表示</p>
+<h3 id="4cbow">4.CBOW</h3>
+<p>CBOW（Continuous Bag-of-Word Model）又称连续词袋模型，是一个三层神经网络。如下图所示，该模型的特点是输入已知上下文，输出对当前单词的预测。<br />
+ 其神经网络示意图如下<br />
+<img alt="" src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/cbow.png" /></p>
+<p>网络计算的步骤：</p>
+<div class="codehilite"><pre><span></span><code>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>其学习目标是最大化对数似然函数：</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>其中，w表示语料库C中任意一个词,即上下文词个数为C<br />
+ 则损失函数为</p>
+<h3 id="5skip-gram-model">5.Skip-gram Model</h3>
+<p>Skip-gram只是逆转了CBOW的因果关系而已，即已知当前词语，预测上下文。<br />
+<img alt="" src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/skip_gram.png" /> word2vec在训练过程中的权重矩阵特别大，其还有两种方法优化训练过程。</p>
+<h3 id="6">6.优化训练方法</h3>
+<p>6.1 负采样（negative sampling）</p>
+<h4 id="62-softmax">6.2 层序softmax</h4>
+<p>目前还不是很能理解这两种办法，等以后再来回顾</p>
+<h3 id="7">7.实例</h3>
+<p>下面是使用jieba和gensim中的word2vec模块所做的一个实例</p>
+<div class="codehilite"><pre><span></span><code>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>下面是这个程序的输出</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span><code>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>和贾宝玉相关最高的是甄宝玉，可以看出在这个参数下word2vec具有一定的参考价值，因为真假宝玉是书中的两条线，相关性高是可以理解的。</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+  <div class="foot">本文由 RaZz 发布 · Struggle for Better · <a href="/" style="color:#b3543a">返回首页</a></div>
+</div>
+</body>
+</html>

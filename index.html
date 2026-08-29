@@ -1,164 +1,239 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.8.0" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.8.0" type="image/png" sizes="32x32"><meta name="google-site-verification" content="Uj5COIZ_QouSvahhiDEimTVxloNw4JubWQsPykr0yHw"><meta property="og:type" content="website">
-<meta property="og:title" content="RaZz的博客">
-<meta property="og:url" content="http://www.razzzyz.github.io/index.html">
-<meta property="og:site_name" content="RaZz的博客">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:author" content="RaZz">
-<meta name="twitter:card" content="summary"><title>RaZz的博客</title><link ref="canonical" href="http://www.razzzyz.github.io/index.html"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.8.0"><link rel="stylesheet" href="css/custom.css"><script>var Stun = window.Stun || {};
-var CONFIG = {
-  root: '/',
-  algolia: undefined,
-  assistSearch: undefined,
-  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
-  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
-  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
-  postWidget: {"endText":true},
-  nightMode: {"enable":true},
-  back2top: {"enable":true},
-  codeblock: {"style":"default","highlight":"light","wordWrap":false},
-  reward: false,
-  fancybox: false,
-  zoomImage: {"gapAside":"20px"},
-  galleryWaterfall: undefined,
-  lazyload: false,
-  pjax: undefined,
-  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
-  shortcuts: undefined,
-  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
-  sourcePath: {"js":"js","css":"css","images":"images"},
-};
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RaZz 的主页 — 文章 · 论文 · 项目 · 图片</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:Georgia,"Songti SC","SimSun",-apple-system,"PingFang SC","Microsoft YaHei",serif;background:#faf8f5;color:#2b2b2b}
+  .hero{background:url('img/stars.jpg') center/cover;padding:64px 20px 56px;text-align:center;color:#fff;position:relative}
+  .hero::after{content:'';position:absolute;inset:0;background:rgba(10,10,30,.55)}
+  .hero>*{position:relative;z-index:1}
+  .avatar{width:96px;height:96px;border-radius:50%;border:4px solid rgba(255,255,255,.8);object-fit:cover;margin-bottom:16px}
+  .hero h1{font-size:42px;letter-spacing:6px;font-weight:700;margin-bottom:8px}
+  .hero .sig{font-size:15px;font-style:italic;opacity:.9;letter-spacing:2px}
+  .hero .social{margin-top:18px}
+  .hero .social a{display:inline-block;color:#fff;text-decoration:none;margin:0 10px;font-size:14px;border:1px solid rgba(255,255,255,.5);padding:6px 18px;border-radius:30px;transition:.2s}
+  .hero .social a:hover{background:#fff;color:#222}
+  nav.tabs{position:sticky;top:0;z-index:50;background:rgba(250,248,245,.94);backdrop-filter:blur(12px);border-bottom:1px solid #e5e0d8;display:flex;justify-content:center;gap:8px;padding:0 16px}
+  nav.tabs a{text-decoration:none;color:#777;font-size:14px;letter-spacing:3px;padding:16px 22px;border-bottom:3px solid transparent;transition:.18s;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+  nav.tabs a:hover{color:#2b2b2b}
+  nav.tabs a.on{color:#2b2b2b;border-bottom-color:#b3543a;font-weight:600}
+  .wrap{max-width:1100px;margin:0 auto;padding:44px 20px}
+  .pane{display:none}
+  .pane.on{display:block}
+  .section-title{font-size:22px;letter-spacing:4px;margin-bottom:8px;display:flex;align-items:center;gap:14px;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+  .section-title::after{content:'';flex:1;height:1px;background:#ddd}
+  .section-sub{color:#999;font-size:13px;margin-bottom:26px;letter-spacing:1px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+  .card{background:#fff;border:1px solid #eee;border-radius:4px;overflow:hidden;transition:.25s;cursor:pointer;display:block;text-decoration:none;color:inherit}
+  .card:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(0,0,0,.1)}
+  .card .cover{height:130px;position:relative}
+  .card .cover .no{position:absolute;top:14px;left:18px;color:#fff;font-size:13px;letter-spacing:2px;opacity:.85}
+  .card .cover .date{position:absolute;bottom:12px;right:16px;color:#fff;font-size:12px;opacity:.85}
+  .card .body{padding:20px}
+  .card .cat{font-size:11px;color:#b3543a;letter-spacing:2px;text-transform:uppercase;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+  .card h2{font-size:19px;margin:8px 0 10px;line-height:1.4}
+  .card p{font-size:13.5px;color:#777;line-height:1.7}
+  .card .more{display:inline-block;margin-top:14px;font-size:12.5px;color:#2b2b2b;border-bottom:1px solid #999;padding-bottom:2px}
+  .count{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:12px;color:#b0a898;background:#f1ede6;padding:3px 12px;border-radius:20px;margin-left:12px;letter-spacing:0}
+  /* 文章正文页 */
+  .article{max-width:820px;margin:0 auto;padding:44px 22px 70px}
+  .article .back{display:inline-block;color:#999;text-decoration:none;font-size:13px;margin-bottom:26px;letter-spacing:1px}
+  .article .back:hover{color:#b3543a}
+  .article h1{font-size:34px;line-height:1.3;letter-spacing:1px;margin-bottom:12px}
+  .article .meta{color:#999;font-size:13px;margin-bottom:30px;padding-bottom:20px;border-bottom:2px solid #eee}
+  .article .meta a{color:#b3543a;text-decoration:none}
+  .article .content{font-size:16.5px;line-height:2;color:#3a3a3a}
+  .article .content h2{font-size:24px;margin:36px 0 14px;padding-left:12px;border-left:4px solid #b3543a}
+  .article .content h3{font-size:19px;margin:26px 0 10px}
+  .article .content p{margin:14px 0}
+  .article .content ul,.article .content ol{margin:14px 0 14px 26px}
+  .article .content li{margin:6px 0}
+  .article .content a{color:#8a5a1e;text-decoration:underline}
+  .article .content img{max-width:100%;border-radius:6px;margin:10px 0}
+  .article .content blockquote{border-left:4px solid #ddd;color:#777;padding:4px 18px;margin:16px 0;background:#faf7f1}
+  .article .content code{background:#f2ede4;padding:2px 7px;border-radius:4px;font-size:14px;font-family:ui-monospace,Consolas,monospace}
+  .article .content pre{background:#2b2b2b;color:#e8e8e8;padding:18px 20px;border-radius:8px;overflow-x:auto;margin:18px 0;font-size:14px;line-height:1.7}
+  .article .content pre code{background:none;color:inherit;padding:0}
+  .article .content table{border-collapse:collapse;margin:16px 0;width:100%}
+  .article .content th,.article .content td{border:1px solid #e0dcd4;padding:8px 14px;font-size:14.5px}
+  .article .content th{background:#f4efe6}
+  .article .foot{margin-top:44px;padding-top:18px;border-top:1px solid #eee;font-size:12.5px;color:#aaa}
+  .empty{color:#bbb;font-size:15px;padding:40px;text-align:center;letter-spacing:2px}
+  @media(max-width:640px){nav.tabs a{padding:14px 10px;font-size:13px;letter-spacing:1px}.article h1{font-size:26px}}
 
-window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 7.2.0"><style>mjx-container[jax="SVG"] {
-  direction: ltr;
-}
+  .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+  .gallery a{display:block;border-radius:4px;overflow:hidden;border:1px solid #eee;background:#fff;transition:.25s}
+  .gallery a:hover{transform:scale(1.02);box-shadow:0 10px 26px rgba(0,0,0,.14)}
+  .gallery img{width:100%;height:170px;object-fit:cover;display:block}
+  .gallery .cap{padding:9px 12px;font-size:11.5px;color:#999;letter-spacing:.5px}
+</style>
+</head>
+<body>
 
-mjx-container[jax="SVG"] > svg {
-  overflow: visible;
-}
+<div class="hero">
+  <img class="avatar" src="img/b236af3a7d814ed82f827ece2627a88b6dc70066540c1a3b5.jpg" alt="avatar">
+  <h1>RaZz</h1>
+  <div class="sig">Struggle for Better</div>
+  <div class="social">
+    <a href="https://github.com/RaZzzyz">GitHub</a>
+    <a href="#">QQ</a>
+    <a href="/posts/">全部文章</a>
+  </div>
+</div>
 
-mjx-container[jax="SVG"][display="true"] {
-  display: block;
-  text-align: center;
-  margin: 1em 0;
-}
 
-mjx-container[jax="SVG"][justify="left"] {
-  text-align: left;
-}
+<nav class="tabs">
+  <a href="#articles" class="on" data-tab="articles">文章</a>
+  <a href="#papers" data-tab="papers">论文</a>
+  <a href="#repos" data-tab="repos">Git Repo</a>
+  <a href="#gallery" data-tab="gallery">图片集</a>
+</nav>
 
-mjx-container[jax="SVG"][justify="right"] {
-  text-align: right;
-}
+<div class="wrap">
+  <section class="pane on" id="articles">
+    <div class="section-title">文章<span class="count">6 篇</span></div>
+    <div class="section-sub">学习笔记 · 算法讲解 · 实验记录 — 写新文章:在 posts/ 目录新建 .md 文件</div>
+    <div class="grid">
 
-g[data-mml-node="merror"] > g {
-  fill: red;
-  stroke: red;
-}
+      <a class="card" href="/posts/datadistillation.html">
+        <div class="cover" style="background:linear-gradient(135deg,#5b2a86,#a43d6e)"><span class="no">Vol.06</span><span class="date">2024-05-03</span></div>
+        <div class="body">
+          <span class="cat">机器学习</span>
+          <h2>DataDistillation 数据集蒸馏</h2>
+          <p>DATASET DISTILLATION publication: 2018 arxiv Facebook AI Research github：https://github.co…</p>
+          <span class="more">阅读全文</span>
+        </div>
+      </a>
 
-g[data-mml-node="merror"] > rect[data-background] {
-  fill: yellow;
-  stroke: none;
-}
+      <a class="card" href="/posts/mpich.html">
+        <div class="cover" style="background:linear-gradient(135deg,#0f4c5c,#1b7f8c)"><span class="no">Vol.05</span><span class="date">2024-04-29</span></div>
+        <div class="body">
+          <span class="cat">并行计算</span>
+          <h2>mpich 并行环境搭建</h2>
+          <p>一、配置Linux集群 1. Linux系统：ubuntu 20.04.6 desktop amd64 在Uuntu官方页面下载对应版本镜像 2. 实验平台 :VMware® Wo…</p>
+          <span class="more">阅读全文</span>
+        </div>
+      </a>
 
-g[data-mml-node="mtable"] > line[data-line] {
-  stroke-width: 70px;
-  fill: none;
-}
+      <a class="card" href="/posts/hello-world.html">
+        <div class="cover" style="background:linear-gradient(135deg,#3a3a5c,#6c6ca8)"><span class="no">Vol.04</span><span class="date">2024-04-19</span></div>
+        <div class="body">
+          <span class="cat">随笔</span>
+          <h2>Hello World</h2>
+          <p>Hello Friends 第一次写这个blog是在2021年11月左右，中间经历了很多，也很长时间没写。 现在是2024年4月19日，重新收拾</p>
+          <span class="more">阅读全文</span>
+        </div>
+      </a>
 
-g[data-mml-node="mtable"] > rect[data-frame] {
-  stroke-width: 70px;
-  fill: none;
-}
+      <a class="card" href="/posts/hits-pagerank.html">
+        <div class="cover" style="background:linear-gradient(135deg,#8c3b2a,#c96f4a)"><span class="no">Vol.03</span><span class="date">2024-04-19</span></div>
+        <div class="body">
+          <span class="cat">机器学习</span>
+          <h2>HiTs_PageRank HITS 算法</h2>
+          <p>1.算法来源 1999年，Jon Kleinberg 提出了HITS算法。 HITS Hyperlink Induced Topic Search 。在HITS算法中，每个页面被赋…</p>
+          <span class="more">阅读全文</span>
+        </div>
+      </a>
 
-g[data-mml-node="mtable"] > .mjx-dashed {
-  stroke-dasharray: 140;
-}
+      <a class="card" href="/posts/transe.html">
+        <div class="cover" style="background:linear-gradient(135deg,#1d5b3a,#3a8c5c)"><span class="no">Vol.02</span><span class="date">2024-04-19</span></div>
+        <div class="body">
+          <span class="cat">机器学习</span>
+          <h2>transE 知识图谱嵌入</h2>
+          <p>1.TransE作用 TransE模型的核心作用就是将知识图谱中的三元组翻译成embedding向量 2.TransE模型的设计思想 如果一个三元组 h,r,t 成立，那么他们需要…</p>
+          <span class="more">阅读全文</span>
+        </div>
+      </a>
 
-g[data-mml-node="mtable"] > .mjx-dotted {
-  stroke-linecap: round;
-  stroke-dasharray: 0,140;
-}
+      <a class="card" href="/posts/word2vec.html">
+        <div class="cover" style="background:linear-gradient(135deg,#2a3a6c,#5c6ca8)"><span class="no">Vol.01</span><span class="date">2024-04-19</span></div>
+        <div class="body">
+          <span class="cat">机器学习</span>
+          <h2>word2vec 词向量</h2>
+          <p>参考博客： | | | | | | 1.什么是word2vec 2013年，Google团队发表了word2vec工具。word2vec工具主要包含两个模型：跳字模型（skip g…</p>
+          <span class="more">阅读全文</span>
+        </div>
+      </a>
+    </div>
+    
+  </section>
 
-g[data-mml-node="mtable"] > svg {
-  overflow: visible;
-}
+  <section class="pane" id="papers">
+    <div class="section-title">论文 / 技术报告<span class="count">0 篇</span></div>
+    <div class="section-sub">算法研究 · 实验报告 · 课程论文</div>
+    <div class="grid">
+<div class="empty">还没有论文,在 posts/ 里新建 type: paper 的 md 即可</div>
+    </div>
+  </section>
 
-[jax="SVG"] mjx-tool {
-  display: inline-block;
-  position: relative;
-  width: 0;
-  height: 0;
-}
 
-[jax="SVG"] mjx-tool > mjx-tip {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
+  <section class="pane" id="repos">
+    <div class="section-title">Git Repository<span class="count">5 个仓库</span></div>
+    <div class="section-sub">github.com/RaZzzyz · 个人项目</div>
+    <div class="grid">
+      <a class="card" href="https://github.com/RaZzzyz/fakecomment" target="_blank">
+        <div class="cover" style="background:linear-gradient(135deg,#24292e,#444c56)"><span class="no">&#xf09b; fakecomment</span><span class="date">★ 8</span></div>
+        <div class="body"><span class="cat">Python</span><h2>fakecomment</h2><p>基于 NLP 的虚假评论分析项目。</p><span class="more">查看仓库</span></div>
+      </a>
+      <a class="card" href="https://github.com/RaZzzyz/download-bilibili-video" target="_blank">
+        <div class="cover" style="background:linear-gradient(135deg,#24292e,#444c56)"><span class="no">&#xf09b; download-bilibili-video</span><span class="date">★ 6</span></div>
+        <div class="body"><span class="cat">Python</span><h2>download-bilibili-video</h2><p>一个很简单的 B 站视频下载工具。</p><span class="more">查看仓库</span></div>
+      </a>
+      <a class="card" href="https://github.com/RaZzzyz/little-translate" target="_blank">
+        <div class="cover" style="background:linear-gradient(135deg,#24292e,#444c56)"><span class="no">&#xf09b; little-translate</span><span class="date">★ 1</span></div>
+        <div class="body"><span class="cat">Python</span><h2>little-translate</h2><p>爬到百度翻译去获取内容的小工具。</p><span class="more">查看仓库</span></div>
+      </a>
+      <a class="card" href="https://github.com/RaZzzyz/RaZzzyz.github.io" target="_blank">
+        <div class="cover" style="background:linear-gradient(135deg,#24292e,#444c56)"><span class="no">&#xf09b; RaZzzyz.github.io</span><span class="date">★ 1</span></div>
+        <div class="body"><span class="cat">HTML</span><h2>RaZzzyz.github.io</h2><p>个人博客站点(Hexo + Stun 主题)。</p><span class="more">查看仓库</span></div>
+      </a>
+      <a class="card" href="https://github.com/RaZzzyz/blogPic" target="_blank">
+        <div class="cover" style="background:linear-gradient(135deg,#24292e,#444c56)"><span class="no">&#xf09b; blogPic</span><span class="date">★ 1</span></div>
+        <div class="body"><span class="cat">Image</span><h2>blogPic</h2><p>博客图床:文章配图与头像素材库。</p><span class="more">查看仓库</span></div>
+      </a>
+    </div>
+  </section>
 
-mjx-tool > mjx-tip {
-  display: inline-block;
-  padding: .2em;
-  border: 1px solid #888;
-  font-size: 70%;
-  background-color: #F8F8F8;
-  color: black;
-  box-shadow: 2px 2px 5px #AAAAAA;
-}
 
-g[data-mml-node="maction"][data-toggle] {
-  cursor: pointer;
-}
+  <section class="pane" id="gallery">
+    <div class="section-title">图片集<span class="count">12 张</span></div>
+    <div class="section-sub">实验截图 · 算法示意图 · 日常</div>
+    <div class="gallery">
+      <a href="img/20240501005423.png" target="_blank"><img src="img/20240501005423.png" alt="" loading="lazy"><span class="cap">2024050100</span></a>
+<a href="img/20240501013419.png" target="_blank"><img src="img/20240501013419.png" alt="" loading="lazy"><span class="cap">2024050101</span></a>
+<a href="img/20240501013609.png" target="_blank"><img src="img/20240501013609.png" alt="" loading="lazy"><span class="cap">2024050101</span></a>
+<a href="img/20240501013948.png" target="_blank"><img src="img/20240501013948.png" alt="" loading="lazy"><span class="cap">2024050101</span></a>
+<a href="img/20240503101457.png" target="_blank"><img src="img/20240503101457.png" alt="" loading="lazy"><span class="cap">2024050310</span></a>
+<a href="img/TransE.png" target="_blank"><img src="img/TransE.png" alt="" loading="lazy"><span class="cap">TransE</span></a>
+<a href="img/skip_gram.png" target="_blank"><img src="img/skip_gram.png" alt="" loading="lazy"><span class="cap">skip-gram</span></a>
+<a href="img/cbow.png" target="_blank"><img src="img/cbow.png" alt="" loading="lazy"><span class="cap">CBOW</span></a>
+<a href="img/pagerank1.png" target="_blank"><img src="img/pagerank1.png" alt="" loading="lazy"><span class="cap">PageRank</span></a>
+<a href="img/ddshow1.png" target="_blank"><img src="img/ddshow1.png" alt="" loading="lazy"><span class="cap">DataDistillation</span></a>
+<a href="img/dcshow1.png" target="_blank"><img src="img/dcshow1.png" alt="" loading="lazy"><span class="cap">实验截图</span></a>
+<a href="img/emfshow1.png" target="_blank"><img src="img/emfshow1.png" alt="" loading="lazy"><span class="cap">实验截图</span></a>
+    </div>
+  </section>
 
-mjx-status {
-  display: block;
-  position: fixed;
-  left: 1em;
-  bottom: 1em;
-  min-width: 25%;
-  padding: .2em .4em;
-  border: 1px solid #888;
-  font-size: 90%;
-  background-color: #F8F8F8;
-  color: black;
-}
-
-foreignObject[data-mjx-xml] {
-  font-family: initial;
-  line-height: normal;
-  overflow: visible;
-}
-
-.MathJax path {
-  stroke-width: 3;
-}
-
-mjx-container[display="true"] {
-  overflow: auto hidden;
-}
-
-mjx-container[display="true"] + br {
-  display: none;
-}
-</style></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Share my stories</div><div class="header-banner-info__subtitle">Struggle for Better</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content content-home" id="content"><section class="postlist"><article class="postlist-item post"><header class="post-header"><div class="sticky-top" data-popover="置顶文章" data-popover-pos="up"><span class="sticky-top__icon"><i class="fas fa-thumbtack"></i></span></div><h1 class="post-title"><a class="post-title__link" href="/2024/04/19/hello-world/">Hello World</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2024-04-19</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2024-04-20</span></span></div></header><div class="post-body"><div class="post-excerpt"><center>
-
-        <h1 id="hello-friends"   >
-          <a href="#hello-friends" class="heading-link"><i class="fas fa-link"></i></a><span style="color:red;">H</span><span
-style="color:blue;">e</span><span style="color:green;">l</span><span
-style="color:yellow;">l</span><span style="color:purple;">o</span><span
-style="color:red;"> F</span><span style="color:blue;">r</span><span
-style="color:green;">i</span><span style="color:yellow;">e</span><span
-style="color:purple;">n</span><span style="color:red;">d</span><span
-style="color:blue;">s</span></h1>
-      
-</center>
-
-        <h4 id="第一次写这个blog是在2021年11月左右中间经历了很多也很长时间没写" 
- >
-          <a href="#第一次写这个blog是在2021年11月左右中间经历了很多也很长时间没写" class="heading-link"><i class="fas fa-link"></i></a>第一次写这个blog是在2021年11月左右，中间经历了很多，也很长时间没写。</h4>
-      
-
-        <h4 id="现在是2024年4月19日重新收拾"   >
-          <a href="#现在是2024年4月19日重新收拾" class="heading-link"><i class="fas fa-link"></i></a>现在是2024年4月19日，重新收拾</h4>
-      
-</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2024/05/03/DataDistillation/">DataDistillation</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2024-05-03</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2024-05-12</span></span></div></header><div class="post-body"><div class="post-excerpt">这篇文章讲述了knowledgeDistillation领域的数据集蒸馏</div><div class="post-readmore"><a class="post-readmore__link" href="/2024/05/03/DataDistillation/"><span class="post-readmore__text">阅读全文</span><span class="post-readmore__icon"><i class="fas fa-long-arrow-alt-right"></i></span></a></div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2024/04/29/mpich/">mpich</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2024-04-29</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2024-05-01</span></span></div></header><div class="post-body"><div class="post-excerpt">这篇文章讲述了并行计算领域的实现方法，使用mpich来完成</div><div class="post-readmore"><a class="post-readmore__link" href="/2024/04/29/mpich/"><span class="post-readmore__text">阅读全文</span><span class="post-readmore__icon"><i class="fas fa-long-arrow-alt-right"></i></span></a></div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2024/04/19/HiTs-PageRank/">HiTs_PageRank</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2024-04-19</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2024-04-20</span></span></div></header><div class="post-body"><div class="post-excerpt">这篇文章讲述了Recommendation领域的排序方法，根据节点间的边的关系来对节点重要性进行排序</div><div class="post-readmore"><a class="post-readmore__link" href="/2024/04/19/HiTs-PageRank/"><span class="post-readmore__text">阅读全文</span><span class="post-readmore__icon"><i class="fas fa-long-arrow-alt-right"></i></span></a></div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2024/04/19/word2vec/">word2vec</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2024-04-19</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2024-04-20</span></span></div></header><div class="post-body"><div class="post-excerpt">这篇文章讲述了NLP领域的生成word embedding方法，用于文本到embedding的转换</div><div class="post-readmore"><a class="post-readmore__link" href="/2024/04/19/word2vec/"><span class="post-readmore__text">阅读全文</span><span class="post-readmore__icon"><i class="fas fa-long-arrow-alt-right"></i></span></a></div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2024/04/19/transE/">transE</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2024-04-19</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2024-04-20</span></span></div></header><div class="post-body"><div class="post-excerpt">这篇文章讲述了NLP领域的生成word embedding方法，使用三元组来进行embedding的生成</div><div class="post-readmore"><a class="post-readmore__link" href="/2024/04/19/transE/"><span class="post-readmore__text">阅读全文</span><span class="post-readmore__icon"><i class="fas fa-long-arrow-alt-right"></i></span></a></div></div></article></section><nav class="paginator"><div class="paginator-inner"><span class="page-number current">1</span></div></nav></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><section class="sidebar-toc hide"></section><!-- ov = overview--><section class="sidebar-ov"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://raw.githubusercontent.com/RaZzzyz/blogPic/main/Pic/b236af3a7d814ed82f827ece2627a88b6dc70066540c1a3b5.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">The good things are not dead.</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/RaZzzyz" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="913510915" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">6</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">5</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">6</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2024</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>RaZz</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.8.0"></script><script src="/js/stun-boot.js?v=2.8.0"></script><script src="/js/scroll.js?v=2.8.0"></script><script src="/js/header.js?v=2.8.0"></script><script src="/js/sidebar.js?v=2.8.0"></script></body></html>
+</div>
+<script>
+(function(){
+  var tabs=document.querySelectorAll('nav.tabs a');
+  var panes=document.querySelectorAll('.pane');
+  tabs.forEach(function(tab){
+    tab.addEventListener('click',function(e){
+      e.preventDefault();
+      var name=tab.getAttribute('data-tab');
+      tabs.forEach(function(t){t.classList.remove('on')});
+      panes.forEach(function(p){p.classList.remove('on')});
+      tab.classList.add('on');
+      document.getElementById(name).classList.add('on');
+      window.scrollTo({top:0,behavior:'smooth'});
+    });
+  });
+})();
+</script>
+</body>
+</html>
