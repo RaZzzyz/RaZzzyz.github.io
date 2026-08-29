@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RaZz 的主页</title>
+<title>LAKD:基于局部学习的激活映射蒸馏 — RaZz 的博客</title>
 <style>
   :root{
     --bg:#f6f4ef; --card:#ffffff; --ink:#23201c; --muted:#8a857d;
@@ -127,153 +127,40 @@
 </style>
 </head>
 <body>
-<div class="site-shell">
-  <aside class="sidebar">
-    <div class="profile-card">
-      <img class="profile-avatar" src="img/b236af3a7d814ed82f827ece2627a88b6dc70066540c1a3b5.jpg" alt="avatar">
-      <h1>RaZz</h1>
-      <div class="profile-role">机器学习 · 知识图谱</div>
-      <div class="profile-sig">Struggle for Better</div>
-      <nav class="social-links">
-        <a href="https://github.com/RaZzzyz" title="GitHub">&#xf09b;</a>
-        <a href="#" title="QQ">&#xf1d6;</a>
-        <a href="#" title="Email">&#xf0e0;</a>
-      </nav>
-    </div>
-    <nav class="section-nav">
-      <a href="#overview" class="active" data-tab="overview"><span class="num">01</span><span>Overview</span></a><a href="#articles" class="" data-tab="articles"><span class="num">02</span><span>文章</span></a><a href="#papers" class="" data-tab="papers"><span class="num">03</span><span>论文</span></a><a href="#repos" class="" data-tab="repos"><span class="num">04</span><span>Git Repo</span></a><a href="#gallery" class="" data-tab="gallery"><span class="num">05</span><span>图片集</span></a>
-    </nav>
-  </aside>
-
-  <main class="main-content">
-    
-      <section id="overview" class="hero-section">
-        <span class="eyebrow">● Overview — 关于我</span>
-        <h2>你好,我是 <em>RaZz</em>,<br>一名机器学习学习者</h2>
-        <p class="hero-lede">关注表示学习、知识图谱与高效训练。这里记录我的学习笔记、实验过程与日常思考,欢迎交流。</p>
-        <div class="hero-focus-grid">
-          <div class="hero-focus-item"><div class="f-ic">&#129504;</div><strong>机器学习</strong><small>word2vec · TransE · 蒸馏</small></div>
-          <div class="hero-focus-item"><div class="f-ic">&#128270;</div><strong>知识图谱</strong><small>表示学习 · 图算法</small></div>
-          <div class="hero-focus-item"><div class="f-ic">&#9889;</div><strong>并行计算</strong><small>MPI · 高性能计算</small></div>
-        </div>
-        <div class="hero-actions">
-          <a class="primary" href="#articles">阅读文章</a>
-          <a class="ghost" href="https://github.com/RaZzzyz">GitHub</a>
-          <a class="ghost" href="#">QQ</a>
-        </div>
-      </section>
-
-    <section id="articles" class="section-block">
-      <div class="section-heading"><span class="num">02</span><h3>文章</h3><span class="cnt">3 篇</span></div>
-      
-      <a class="post-item" href="/posts/ia-rag.html">
-        <div class="no" style="background:linear-gradient(135deg,#5b2a86,#a43d6e)">Vol.01</div>
-        <div class="info">
-          <h4>IA-RAG:用区间代数搞定复杂时序推理</h4>
-          <p>IA-RAG 让时间从冷冰冰的标签变成有逻辑的区间,在 ComplexTR 基准上比最强基线 DyG-RAG 高 10.33%。</p>
-        </div>
-        <div class="meta">
-          <div class="date">2026-08-30</div>
-          <div class="cat">机器学习</div>
-        </div>
-      </a>
-      <a class="post-item" href="/posts/lakd.html">
-        <div class="no" style="background:linear-gradient(135deg,#0f4c5c,#1b7f8c)">Vol.02</div>
-        <div class="info">
-          <h4>LAKD:基于局部学习的激活映射蒸馏</h4>
-          <p>论文分享:LAKD 用分离-解耦 + 非方向性激活映射,让知识蒸馏&quot;可解释&quot;,CIFAR/ImageNet 上达到 SOTA。</p>
-        </div>
-        <div class="meta">
-          <div class="date">2026-08-30</div>
-          <div class="cat">机器学习</div>
-        </div>
-      </a>
-      <a class="post-item" href="/posts/leanrag.html">
-        <div class="no" style="background:linear-gradient(135deg,#3a3a5c,#6c6ca8)">Vol.03</div>
-        <div class="info">
-          <h4>LeanRAG:更省上下文的图 RAG</h4>
-          <p>AAAI&#x27;26 论文分享:LeanRAG 把知识图谱的拓扑信息真正放进检索路径,平均减少 46% 的检索上下文 token。</p>
-        </div>
-        <div class="meta">
-          <div class="date">2026-08-30</div>
-          <div class="cat">机器学习</div>
-        </div>
-      </a>
-    </section>
-
-    <section id="papers" class="section-block">
-      <div class="section-heading"><span class="num">03</span><h3>论文</h3><span class="cnt">3 篇</span></div>
-      <div class="pub-timeline"><div class="pub-year">2026</div>
-      <div class="pub-item">
-        <div class="pub-top">
-          <span class="pub-journal">EMNLP&#x27;26 Findings</span>
-          <span class="pub-status">已接收</span>
-        </div>
-        <div class="pub-title">IA-RAG: Interval-Algebra-Driven Temporal Reasoning for Dynamic Knowledge Retrieval</div>
-        <div class="pub-authors">X Wang, Y Zhang, W Fan, H Zhang, D Wang, G Yan, S Mao, B Shi, Y Lan, et al.</div>
-        <div class="pub-links"><a href="https://arxiv.org/abs/2606.06044" target="_blank">论文链接</a></div>
-      </div><div class="pub-year">2025</div>
-      <div class="pub-item">
-        <div class="pub-top">
-          <span class="pub-journal">AAAI&#x27;26</span>
-          <span class="pub-status">已发表</span>
-        </div>
-        <div class="pub-title">LeanRAG: Knowledge-Graph-Based Generation with Semantic Aggregation and Hierarchical Retrieval</div>
-        <div class="pub-authors">Y Zhang, R Wu, P Cai, X Wang, G Yan, S Mao, D Wang, B Shi</div>
-        <div class="pub-links"><a href="https://arxiv.org/abs/2508.10391" target="_blank">论文链接</a></div>
-      </div><div class="pub-year">2024</div>
-      <div class="pub-item">
-        <div class="pub-top">
-          <span class="pub-journal">arXiv preprint</span>
-          <span class="pub-status">预印本</span>
-        </div>
-        <div class="pub-title">LAKD: Activation Mapping Distillation Based on Local Learning</div>
-        <div class="pub-authors">Y Zhang, Y Zhang, Y Zhao, Y Zhang, F Zhu</div>
-        <div class="pub-links"><a href="https://arxiv.org/abs/2408.11478" target="_blank">论文链接</a></div>
-      </div></div>
-    </section>
-
-    <section id="repos" class="section-block">
-      <div class="section-heading"><span class="num">04</span><h3>Git Repo</h3><span class="cnt">0 个</span></div>
-      
-      <div class="empty-card">
-        <div class="e-ic">&#128187;</div>
-        <div class="e-t">暂无仓库</div>
-        <div class="e-s">以后在这里展示 GitHub 项目,敬请期待</div>
-      </div>
-    </section>
-
-    <section id="gallery" class="section-block">
-      <div class="section-heading"><span class="num">05</span><h3>图片集</h3><span class="cnt">0 张</span></div>
-      
-      <div class="empty-card">
-        <div class="e-ic">&#128444;</div>
-        <div class="e-t">暂无图片</div>
-        <div class="e-s">以后在这里展示图片集,敬请期待</div>
-      </div>
-    </section>
-  </main>
+<div class="article">
+  <a class="back" href="/">← 返回首页</a>
+  <h1>LAKD:基于局部学习的激活映射蒸馏</h1>
+  <div class="meta">2026-08-30 · 机器学习 · <a href="#">#知识蒸馏</a> · <a href="#">#模型压缩</a> · <a href="#">#计算机视觉</a></div>
+  <div class="content"><h1 id="lakd">LAKD:基于局部学习的激活映射蒸馏</h1>
+<p>今天分享一篇知识蒸馏方向的新论文:<strong>LAKD: Activation Mapping Distillation Based on Local Learning</strong>(Local Attention Knowledge Distillation)。</p>
+<p>知识蒸馏(Knowledge Distillation)在各类基础视觉模型中被广泛使用,核心目标是让紧凑的学生模型(compact model)从大模型教师(teacher)那里学到知识,从而在参数量小得多的前提下逼近教师的表现。</p>
+<h2 id="_1">现有方法的痛点</h2>
+<p>已有的蒸馏方法大多把精力花在<strong>设计不同的蒸馏目标</strong>上——比如匹配教师输出的 logits、中间层特征、注意力图等等,想尽办法从教师那里"挖"出知识给学生。</p>
+<p>但这类方法普遍忽略了一个问题:<strong>蒸馏信息的有效利用</strong>。</p>
+<ul>
+<li>不同类型的信息被<strong>粗暴地耦合</strong>在一起,一股脑塞给学生;</li>
+<li>结果就是:很难解释"教师网络的哪部分知识、到底怎么帮助学生网络学到了什么"。</li>
+</ul>
+<p>换句话说,蒸馏在实践里效果好,但像个黑盒——你只知道"有用",不知道"为什么有用"。</p>
+<h2 id="lakd-">LAKD 的核心思路:分离-解耦 + 非方向性激活映射</h2>
+<p>LAKD 提出一个全新的蒸馏框架,目标是<strong>更高效地利用蒸馏信息,同时获得更高的可解释性</strong>。它通过<strong>分离-解耦机制(separation-decoupling)</strong>和<strong>非方向性激活映射(non-directional activation mapping)</strong>,建立了一个独立的交互训练机制。</p>
+<h3 id="1-">1. 分离-解耦:把学生网络切成局部模块</h3>
+<p>关键设计:<strong>把学生网络划分成多个具有独立梯度的局部模块</strong>,从而把教师传递过来的知识"解耦"开。</p>
+<p>传统蒸馏是"一个学生整体去模仿一个教师",所有层的误差通过整个网络反向传播,信息混在一起。LAKD 则让每个局部模块独立地、渐进地学习——从简单到复杂,逐步交互训练,让不同模块各学各的,互不干扰。</p>
+<h3 id="2">2. 非方向性激活映射:整合局部知识</h3>
+<p>解耦之后还要能"合起来"。LAKD 用<strong>非方向性激活映射</strong>,帮助学生网络通过学习<strong>粗粒度的特征知识</strong>,把来自不同局部模块的知识整合起来。</p>
+<p>这样既保留了局部解耦带来的清晰分工,又通过粗粒度映射让学生有一个全局的整合视角,而不是各模块各玩各的。</p>
+<h2 id="_2">实验结果</h2>
+<p>在 <strong>CIFAR-10、CIFAR-100 和 ImageNet</strong> 三个数据集上,LAKD 显著优于现有方法,一致地达到 SOTA。</p>
+<p>值得注意的点是:它不仅在精度上领先,而且因为有了"分离-解耦"的结构,整个蒸馏过程变得<strong>可解释</strong>——你能说清楚教师的知识是如何一步步传递并帮助学生学习的,这是很多蒸馏方法给不了的。</p>
+<h2 id="_3">一些思考</h2>
+<p>蒸馏领域这几年卷的方向大多是"换一个更好的蒸馏目标",而 LAKD 换了个角度:<strong>信息利用效率 + 可解释性</strong>。把学生网络拆成独立梯度模块这个思路,和 RAG 里"知识解耦、结构化利用"的思想有些异曲同工——都是"别再一股脑塞,拆开、理清、再整合"。</p>
+<p>当然,局部模块的划分方式(分几块、怎么分)应该对效果有影响,论文里值得细看;另外独立梯度模块会不会增加训练成本,也是实际部署时需要考虑的。</p>
+<h2 id="_4">参考</h2>
+<ul>
+<li>论文:<a href="https://arxiv.org/abs/2408.11478">arXiv:2408.11478</a></li>
+</ul></div>
+  <div class="foot">本文由 RaZz 发布 · Struggle for Better · <a href="/" style="color:#b3543a">返回首页</a></div>
 </div>
-<script>
-(function(){
-  var navs=document.querySelectorAll('.section-nav a');
-  var sections=document.querySelectorAll('.section-block, .hero-section');
-  function setActive(id){
-    navs.forEach(function(n){n.classList.toggle('active', n.getAttribute('data-tab')===id)});
-  }
-  navs.forEach(function(n){
-    n.addEventListener('click',function(){setActive(n.getAttribute('data-tab'))});
-  });
-  // 滚动监听:当前可见 section 高亮对应导航
-  window.addEventListener('scroll',function(){
-    var pos=window.scrollY + 120;
-    var cur=null;
-    sections.forEach(function(s){
-      if(s.offsetTop <= pos) cur=s.id;
-    });
-    if(cur) setActive(cur);
-  },{passive:true});
-})();
-</script>
 </body>
 </html>
