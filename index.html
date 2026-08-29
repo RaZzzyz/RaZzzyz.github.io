@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RaZz 的主页 — 文章 · 论文 · 项目 · 图片</title>
+<title>RaZz 的主页 — 文章</title>
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
   body{font-family:Georgia,"Songti SC","SimSun",-apple-system,"PingFang SC","Microsoft YaHei",serif;background:#faf8f5;color:#2b2b2b}
@@ -63,12 +63,6 @@
   .article .foot{margin-top:44px;padding-top:18px;border-top:1px solid #eee;font-size:12.5px;color:#aaa}
   .empty{color:#bbb;font-size:15px;padding:40px;text-align:center;letter-spacing:2px}
   @media(max-width:640px){nav.tabs a{padding:14px 10px;font-size:13px;letter-spacing:1px}.article h1{font-size:26px}}
-
-  .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
-  .gallery a{display:block;border-radius:4px;overflow:hidden;border:1px solid #eee;background:#fff;transition:.25s}
-  .gallery a:hover{transform:scale(1.02);box-shadow:0 10px 26px rgba(0,0,0,.14)}
-  .gallery img{width:100%;height:170px;object-fit:cover;display:block}
-  .gallery .cap{padding:9px 12px;font-size:11.5px;color:#999;letter-spacing:.5px}
 </style>
 </head>
 <body>
@@ -84,18 +78,10 @@
   </div>
 </div>
 
-
-<nav class="tabs">
-  <a href="#articles" class="on" data-tab="articles">文章</a>
-  <a href="#papers" data-tab="papers">论文</a>
-  <a href="#repos" data-tab="repos">Git Repo</a>
-  <a href="#gallery" data-tab="gallery">图片集</a>
-</nav>
-
 <div class="wrap">
   <section class="pane on" id="articles">
     <div class="section-title">文章<span class="count">6 篇</span></div>
-    <div class="section-sub">学习笔记 · 算法讲解 · 实验记录 — 写新文章:在 posts/ 目录新建 .md 文件</div>
+    <div class="section-sub">学习笔记 · 算法讲解 · 实验记录</div>
     <div class="grid">
 
       <a class="card" href="/posts/datadistillation.html">
@@ -160,80 +146,6 @@
     </div>
     
   </section>
-
-  <section class="pane" id="papers">
-    <div class="section-title">论文 / 技术报告<span class="count">0 篇</span></div>
-    <div class="section-sub">算法研究 · 实验报告 · 课程论文</div>
-    <div class="grid">
-<div class="empty">还没有论文,在 posts/ 里新建 type: paper 的 md 即可</div>
-    </div>
-  </section>
-
-
-  <section class="pane" id="repos">
-    <div class="section-title">Git Repository<span class="count">5 个仓库</span></div>
-    <div class="section-sub">github.com/RaZzzyz · 个人项目</div>
-    <div class="grid">
-      <a class="card" href="https://github.com/RaZzzyz/fakecomment" target="_blank">
-        <div class="cover" style="background:linear-gradient(135deg,#24292e,#444c56)"><span class="no">&#xf09b; fakecomment</span><span class="date">★ 8</span></div>
-        <div class="body"><span class="cat">Python</span><h2>fakecomment</h2><p>基于 NLP 的虚假评论分析项目。</p><span class="more">查看仓库</span></div>
-      </a>
-      <a class="card" href="https://github.com/RaZzzyz/download-bilibili-video" target="_blank">
-        <div class="cover" style="background:linear-gradient(135deg,#24292e,#444c56)"><span class="no">&#xf09b; download-bilibili-video</span><span class="date">★ 6</span></div>
-        <div class="body"><span class="cat">Python</span><h2>download-bilibili-video</h2><p>一个很简单的 B 站视频下载工具。</p><span class="more">查看仓库</span></div>
-      </a>
-      <a class="card" href="https://github.com/RaZzzyz/little-translate" target="_blank">
-        <div class="cover" style="background:linear-gradient(135deg,#24292e,#444c56)"><span class="no">&#xf09b; little-translate</span><span class="date">★ 1</span></div>
-        <div class="body"><span class="cat">Python</span><h2>little-translate</h2><p>爬到百度翻译去获取内容的小工具。</p><span class="more">查看仓库</span></div>
-      </a>
-      <a class="card" href="https://github.com/RaZzzyz/RaZzzyz.github.io" target="_blank">
-        <div class="cover" style="background:linear-gradient(135deg,#24292e,#444c56)"><span class="no">&#xf09b; RaZzzyz.github.io</span><span class="date">★ 1</span></div>
-        <div class="body"><span class="cat">HTML</span><h2>RaZzzyz.github.io</h2><p>个人博客站点(Hexo + Stun 主题)。</p><span class="more">查看仓库</span></div>
-      </a>
-      <a class="card" href="https://github.com/RaZzzyz/blogPic" target="_blank">
-        <div class="cover" style="background:linear-gradient(135deg,#24292e,#444c56)"><span class="no">&#xf09b; blogPic</span><span class="date">★ 1</span></div>
-        <div class="body"><span class="cat">Image</span><h2>blogPic</h2><p>博客图床:文章配图与头像素材库。</p><span class="more">查看仓库</span></div>
-      </a>
-    </div>
-  </section>
-
-
-  <section class="pane" id="gallery">
-    <div class="section-title">图片集<span class="count">12 张</span></div>
-    <div class="section-sub">实验截图 · 算法示意图 · 日常</div>
-    <div class="gallery">
-      <a href="img/20240501005423.png" target="_blank"><img src="img/20240501005423.png" alt="" loading="lazy"><span class="cap">2024050100</span></a>
-<a href="img/20240501013419.png" target="_blank"><img src="img/20240501013419.png" alt="" loading="lazy"><span class="cap">2024050101</span></a>
-<a href="img/20240501013609.png" target="_blank"><img src="img/20240501013609.png" alt="" loading="lazy"><span class="cap">2024050101</span></a>
-<a href="img/20240501013948.png" target="_blank"><img src="img/20240501013948.png" alt="" loading="lazy"><span class="cap">2024050101</span></a>
-<a href="img/20240503101457.png" target="_blank"><img src="img/20240503101457.png" alt="" loading="lazy"><span class="cap">2024050310</span></a>
-<a href="img/TransE.png" target="_blank"><img src="img/TransE.png" alt="" loading="lazy"><span class="cap">TransE</span></a>
-<a href="img/skip_gram.png" target="_blank"><img src="img/skip_gram.png" alt="" loading="lazy"><span class="cap">skip-gram</span></a>
-<a href="img/cbow.png" target="_blank"><img src="img/cbow.png" alt="" loading="lazy"><span class="cap">CBOW</span></a>
-<a href="img/pagerank1.png" target="_blank"><img src="img/pagerank1.png" alt="" loading="lazy"><span class="cap">PageRank</span></a>
-<a href="img/ddshow1.png" target="_blank"><img src="img/ddshow1.png" alt="" loading="lazy"><span class="cap">DataDistillation</span></a>
-<a href="img/dcshow1.png" target="_blank"><img src="img/dcshow1.png" alt="" loading="lazy"><span class="cap">实验截图</span></a>
-<a href="img/emfshow1.png" target="_blank"><img src="img/emfshow1.png" alt="" loading="lazy"><span class="cap">实验截图</span></a>
-    </div>
-  </section>
-
 </div>
-<script>
-(function(){
-  var tabs=document.querySelectorAll('nav.tabs a');
-  var panes=document.querySelectorAll('.pane');
-  tabs.forEach(function(tab){
-    tab.addEventListener('click',function(e){
-      e.preventDefault();
-      var name=tab.getAttribute('data-tab');
-      tabs.forEach(function(t){t.classList.remove('on')});
-      panes.forEach(function(p){p.classList.remove('on')});
-      tab.classList.add('on');
-      document.getElementById(name).classList.add('on');
-      window.scrollTo({top:0,behavior:'smooth'});
-    });
-  });
-})();
-</script>
 </body>
 </html>
