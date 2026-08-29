@@ -17,10 +17,9 @@
   /* ===== 主体网格(参照参考站排版)===== */
   .site-shell{display:grid;grid-template-columns:272px minmax(0,1fr);gap:48px;width:min(1280px,calc(100% - 48px));margin:0 auto;padding:42px 0 64px}
 
-  /* ===== 左侧栏 ===== */
-  .sidebar{position:relative}
-  .profile-card{position:sticky;top:42px;background:url('img/stars.jpg') center/cover;border-radius:20px;padding:34px 24px;text-align:center;color:#fff;overflow:hidden;box-shadow:0 12px 40px rgba(20,15,40,.28)}
-  .profile-card::after{content:'';position:absolute;inset:0;background:rgba(10,10,32,.62);z-index:0}
+  /* ===== 左侧栏(整体固定,不随页面滚动)===== */
+  .sidebar{position:sticky;top:42px;align-self:start}
+  .profile-card{background:linear-gradient(160deg,#23233f,#3a3a5c);border-radius:20px;padding:34px 24px;text-align:center;color:#fff;overflow:hidden;box-shadow:0 12px 40px rgba(20,15,40,.28)}
   .profile-card>*{position:relative;z-index:1}
   .profile-avatar{width:96px;height:96px;border-radius:50%;object-fit:cover;border:3px solid rgba(255,255,255,.8);margin:0 auto 16px;display:block;box-shadow:0 6px 24px rgba(0,0,0,.4)}
   .profile-card h1{font-size:23px;letter-spacing:3px;font-weight:700}
@@ -66,7 +65,6 @@
   /* 文章列表 */
   .post-item{display:flex;align-items:center;gap:18px;padding:18px 8px;border-bottom:1px solid var(--bg);text-decoration:none;transition:.18s;border-radius:10px}
   .post-item:hover{background:var(--bg)}
-  .post-item .no{width:40px;height:40px;flex-shrink:0;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff}
   .post-item .info{flex:1;min-width:0}
   .post-item .info h4{font-size:16.5px;font-weight:600;margin-bottom:4px}
   .post-item .info p{font-size:13px;color:var(--muted);line-height:1.6}
@@ -92,7 +90,6 @@
   /* Git 仓库 */
   .repo-item{display:flex;align-items:center;gap:18px;margin-bottom:14px;padding:18px 22px;background:var(--bg);border:1px solid var(--line);border-radius:12px;transition:.2s}
   .repo-item:hover{border-color:var(--accent);box-shadow:0 6px 20px rgba(0,0,0,.06)}
-  .repo-item .repo-ic{width:44px;height:44px;flex-shrink:0;border-radius:12px;background:linear-gradient(135deg,#24292e,#444c56);display:flex;align-items:center;justify-content:center;font-size:20px;color:#fff}
   .repo-item .repo-info{flex:1;min-width:0}
   .repo-item .repo-info .repo-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:5px}
   .repo-item .repo-info .repo-name{font-size:15.5px;font-weight:600}
@@ -131,6 +128,7 @@
   .article .foot{margin-top:44px;padding-top:18px;border-top:1px solid #eee;font-size:12.5px;color:#aaa}
   @media(max-width:900px){
     .site-shell{grid-template-columns:1fr;gap:24px;width:min(100% - 28px,720px);padding:18px 0 40px}
+    .sidebar{position:static}
     .profile-card{position:static}
     .section-nav{display:flex;flex-wrap:wrap;gap:6px}
     .section-nav a{flex:1;min-width:130px;justify-content:center}
