@@ -73,6 +73,22 @@
   .post-item .meta{flex-shrink:0;text-align:right}
   .post-item .meta .date{font-size:12.5px;color:#b5aea3}
   .post-item .meta .cat{display:inline-block;font-size:11px;color:var(--accent);background:#faf0ea;padding:2px 12px;border-radius:16px;margin-top:7px}
+  /* 论文时间线 */
+  .pub-timeline{position:relative;padding-left:26px}
+  .pub-timeline::before{content:'';position:absolute;left:5px;top:8px;bottom:8px;width:2px;background:var(--line)}
+  .pub-year{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:700;letter-spacing:2px;color:var(--accent);margin:22px 0 10px}
+  .pub-year:first-child{margin-top:0}
+  .pub-year::before{content:'';width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px #f7e8e2;flex-shrink:0}
+  .pub-item{position:relative;margin-bottom:14px;padding:16px 20px;background:var(--bg);border:1px solid var(--line);border-radius:12px;transition:.2s}
+  .pub-item:hover{border-color:var(--accent);box-shadow:0 6px 20px rgba(0,0,0,.06)}
+  .pub-item .pub-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:7px}
+  .pub-item .pub-journal{font-size:11px;font-weight:700;color:#fff;background:var(--accent);padding:3px 12px;border-radius:14px;letter-spacing:.5px}
+  .pub-item .pub-status{font-size:11px;color:var(--muted);background:var(--card);border:1px solid var(--line);padding:2px 10px;border-radius:14px}
+  .pub-item .pub-title{font-size:15.5px;font-weight:600;line-height:1.5;margin-bottom:6px}
+  .pub-item .pub-authors{font-size:12.5px;color:var(--muted);margin-bottom:6px}
+  .pub-item .pub-links{font-size:12.5px}
+  .pub-item .pub-links a{color:var(--accent);text-decoration:none;margin-right:14px;border-bottom:1px dashed rgba(179,84,58,.4)}
+  .pub-item .pub-links a:hover{border-bottom-style:solid}
   /* 空状态 */
   .empty-card{border:2px dashed var(--line);border-radius:14px;padding:64px 30px;text-align:center}
   .empty-card .e-ic{font-size:36px;opacity:.35;margin-bottom:12px}
@@ -114,7 +130,7 @@
 <div class="article">
   <a class="back" href="/">← 返回首页</a>
   <h1>LeanRAG:更省上下文的图 RAG</h1>
-  <div class="meta">2026-06-02 · 机器学习 · <a href="#">#RAG</a> · <a href="#">#知识图谱</a> · <a href="#">#LLM</a> · <a href="#">#AAAI</a></div>
+  <div class="meta">2026-08-30 · 机器学习 · <a href="#">#RAG</a> · <a href="#">#知识图谱</a> · <a href="#">#LLM</a> · <a href="#">#AAAI</a></div>
   <div class="content"><h1 id="leanrag-ragaaai-26">LeanRAG:更省上下文的图 RAG(AAAI' 26)</h1>
 <p>今天分享一篇 RAG 方向的新论文:<strong>LeanRAG: Knowledge-Graph-Based Generation with Semantic Aggregation and Hierarchical Retrieval</strong>。</p>
 <p>它关注的问题很直接:KG-based RAG 虽然更结构化,但检索时经常又贵又冗余,尤其是复杂问答里,图建好了却没真正"用起来"。以前的 GraphRAG / HiRAG 类方法,核心思路是把文档组织成知识图谱或层级摘要。但问题在于:高层摘要节点之间常常像一个个"语义孤岛",检索阶段又容易退化成 flat search,最后塞给 LLM 一堆看似相关、实际很吵的上下文。</p>

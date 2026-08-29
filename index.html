@@ -73,6 +73,22 @@
   .post-item .meta{flex-shrink:0;text-align:right}
   .post-item .meta .date{font-size:12.5px;color:#b5aea3}
   .post-item .meta .cat{display:inline-block;font-size:11px;color:var(--accent);background:#faf0ea;padding:2px 12px;border-radius:16px;margin-top:7px}
+  /* 论文时间线 */
+  .pub-timeline{position:relative;padding-left:26px}
+  .pub-timeline::before{content:'';position:absolute;left:5px;top:8px;bottom:8px;width:2px;background:var(--line)}
+  .pub-year{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:700;letter-spacing:2px;color:var(--accent);margin:22px 0 10px}
+  .pub-year:first-child{margin-top:0}
+  .pub-year::before{content:'';width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px #f7e8e2;flex-shrink:0}
+  .pub-item{position:relative;margin-bottom:14px;padding:16px 20px;background:var(--bg);border:1px solid var(--line);border-radius:12px;transition:.2s}
+  .pub-item:hover{border-color:var(--accent);box-shadow:0 6px 20px rgba(0,0,0,.06)}
+  .pub-item .pub-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:7px}
+  .pub-item .pub-journal{font-size:11px;font-weight:700;color:#fff;background:var(--accent);padding:3px 12px;border-radius:14px;letter-spacing:.5px}
+  .pub-item .pub-status{font-size:11px;color:var(--muted);background:var(--card);border:1px solid var(--line);padding:2px 10px;border-radius:14px}
+  .pub-item .pub-title{font-size:15.5px;font-weight:600;line-height:1.5;margin-bottom:6px}
+  .pub-item .pub-authors{font-size:12.5px;color:var(--muted);margin-bottom:6px}
+  .pub-item .pub-links{font-size:12.5px}
+  .pub-item .pub-links a{color:var(--accent);text-decoration:none;margin-right:14px;border-bottom:1px dashed rgba(179,84,58,.4)}
+  .pub-item .pub-links a:hover{border-bottom-style:solid}
   /* 空状态 */
   .empty-card{border:2px dashed var(--line);border-radius:14px;padding:64px 30px;text-align:center}
   .empty-card .e-ic{font-size:36px;opacity:.35;margin-bottom:12px}
@@ -157,7 +173,7 @@
           <p>IA-RAG 让时间从冷冰冰的标签变成有逻辑的区间,在 ComplexTR 基准上比最强基线 DyG-RAG 高 10.33%。</p>
         </div>
         <div class="meta">
-          <div class="date">2026-06-10</div>
+          <div class="date">2026-08-30</div>
           <div class="cat">机器学习</div>
         </div>
       </a>
@@ -168,7 +184,7 @@
           <p>AAAI&#x27;26 论文分享:LeanRAG 把知识图谱的拓扑信息真正放进检索路径,平均减少 46% 的检索上下文 token。</p>
         </div>
         <div class="meta">
-          <div class="date">2026-06-02</div>
+          <div class="date">2026-08-30</div>
           <div class="cat">机器学习</div>
         </div>
       </a>
@@ -180,7 +196,7 @@
       <div class="empty-card">
         <div class="e-ic">&#128214;</div>
         <div class="e-t">暂无论文</div>
-        <div class="e-s">以后在这里展示论文,敬请期待</div>
+        <div class="e-s">在 posts/ 新建 type: paper 的 md 即可收录(需含 journal 期刊字段)</div>
       </div>
     </section>
 
